@@ -1,0 +1,48 @@
+Setup React Native App Environment
+________________________________________
+
+Ensure you have node.js installed
+
+$brew install node
+$node -v
+
+________________________________________
+
+App Environment
+
+> cd to folder where you want to hold app
+
+$npm install create-react-native-app
+$npm create-react-native-app <app-name>
+$cd <app_name>
+
+________________________________________
+
+React Native Environment in up
+
+> To install any packages from here 
+$npm install <package-name>
+
+Packages; 
+
+$npm install nodemon 
+
+-> Reloads page on save
+
+$npm install watchman
+
+-> watches files, not sure exactly what it does but it helped
+
+$npm install expo
+$npm expo start
+*Press enter for defaults if prompted
+
+-> Facilitates app simulation (online iOS/Android sim, web and personal device)
+
+$npm install 
+
+
+
+
+
+

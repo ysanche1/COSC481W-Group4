@@ -1,0 +1,3 @@
+npm install nodemon watchman @react-navigation/stack react-native-paper @react-navigation/native react-native-gifted-chat
+//REMOVE UNSUED PACKAGES FROM NODE MODULES
+npm prune
