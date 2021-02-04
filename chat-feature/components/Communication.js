@@ -8,6 +8,8 @@ import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 
+
+
 firebase.initializeApp({
 
   apiKey: "AIzaSyAkSAaOCoQGMJ68eDks3sN4LdxFNrnYPGs",
@@ -26,7 +28,7 @@ function App() {
   const [user] = useAuthState(auth);
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-test">
           <SignOut />
       </header>
       <section>
