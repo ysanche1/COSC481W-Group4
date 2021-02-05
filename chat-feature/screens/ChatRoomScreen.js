@@ -17,7 +17,8 @@ export default function RoomScreen({navigation, SID}) {
         const storedMessages = firestore()
         .collection(messagesFDB)
         .doc(SID)
-        .get();
+        .orderby('createdAt')
+        .limit(25);
         //MATCH CURRENT USER ID MATCH IS _id:1
 //        setMessages(storedMessages);
               
