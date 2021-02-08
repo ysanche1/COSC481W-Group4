@@ -1,5 +1,8 @@
-npm install nodemon watchman @react-navigation/stack react-native-paper @react-navigation/native react-native-gifted-chat firebase/app firebase/firestore firebase/auth react-firebase-hooks/auth react-firebase-hooks/firestore
+npm install expo nodemon @react-navigation/stack react-native-paper @react-navigation/native react-native-gifted-chat 
+npm install @react-native-firebase/app 
+npm install firebase/firestore firebase/auth react-firebase-hooks/auth react-firebase-hooks/firestore
 
 
+SET UP REACT NATIVE FIRESTORE IN IOS/ANDROID: https://rnfirebase.io/ -> "Getting Started"
 //REMOVE UNSUED PACKAGES FROM NODE MODULES
 npm prune
