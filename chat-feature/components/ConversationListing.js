@@ -2,16 +2,19 @@ import React, { Title } from 'react';
 const { width, height } = Dimensions.get('screen');
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
 
+//LINE OF CONVERSATION TO BE LISTED IN SCREEN
 export default function ConversationListing({roomtitle, lastmessage, time, sid}){
+    const navigation = useNavigation();
     function handlePress() {
         //FILL CHAT ROOM WITH MESSAGES WITH RELATED SID
-        //OPEN CHATROOM
-        console.log("SESSION: " + sid + "Entered")
+        navigation.navigate('ChatRoom'); //OPEN CHATROOM
+
+        console.log("SESSION: " + sid + " Entered");
         //ADD NAVIGATION -> Chatroom after loaded
     }
-    console.log(lastmessage);
     return (
         <List.Item
             title={roomtitle}
@@ -23,6 +26,7 @@ export default function ConversationListing({roomtitle, lastmessage, time, sid})
             style = {styles.item}
             right = {props => <Text style = {styles.time}>{time}</Text>
             }
+        onPress = {() => handlePress()}
             />
     );
 }
