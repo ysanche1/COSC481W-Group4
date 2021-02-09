@@ -13,7 +13,7 @@ App Environment
 > cd to folder where you want to hold app
 
 $npm install create-react-native-app
-$npm create-react-native-app <app-name>
+$npx create-react-native-app <app-name>
 $cd <app_name>
 
 ________________________________________
