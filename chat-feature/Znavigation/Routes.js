@@ -3,12 +3,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
 //IMPORT STACHS
-import HomeStack from './ChatStack';
+import DrawerNavigator from './DrawerNavigator';
 
 export default function Routes() {
   return (
     <NavigationContainer>
-      <HomeStack />
+      <DrawerNavigator />
     </NavigationContainer>
   );
 }

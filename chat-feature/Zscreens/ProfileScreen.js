@@ -2,22 +2,24 @@ import React from 'react';
 import { Title } from 'react-native-paper';
 import { StyleSheet, View, Text, ScrollView, Image } from 'react-native';
 
-import ProfileButton from '../Zcomponents/ProfileButton';
+import { ProfileButton } from '../Zcomponents/Buttons';
 
 
+//export default function ProfileScreen({route}) {
 export default function ProfileScreen({route}) {
-     console.log(route);
-    const {name, uid, img, thisUser} = route.params;
     console.log(route.params);
-   
     
+    const {name, uid, img, thisUser} = (route.params == null) ? {name: 'Your Name', uid: 'UID', img: '', thisUser: true} : route.params;
+
+    console.log((thisUser ? "Your ": name + " ") + "Profile Screen");
+
     const OtherProfile = () => {
         return (
             <ScrollView contentContainerStyle = {{flex:1}}> 
             <View style = {styles.container}>
 
             <Image src = {img} style = {styles.IMG}/>
-            <Text style = {styles.name}> {name}</Text>
+            <Text style = {styles.name}>{name}</Text>
 
             <View style = {styles.buttonCont}>
             <ProfileButton title = 'New Chat' icon = 'chat'/> 
@@ -35,27 +37,25 @@ export default function ProfileScreen({route}) {
             <View style = {styles.container}>
 
             <Image src = {img} style = {styles.IMG}/>
-            <Text style = {styles.name}>Name Here</Text>
+            <Text style = {styles.name}>Your name</Text>
 
             <View style = {styles.buttonCont}>
             <ProfileButton title = 'Edit Profile'/> 
             <ProfileButton title = 'Edit Account'/> 
 
             </View>
-
             </View>
-
             </ScrollView>
         );
     }
 
     return (
         (thisUser ? <UserProfile/> : <OtherProfile/>)
-    );
-            }
+        );
+         }
 
-            const styles = StyleSheet.create({
-            IMG: {
+         const styles = StyleSheet.create({
+         IMG: {
             width: 150, 
             height: 150, 
 
@@ -65,15 +65,16 @@ export default function ProfileScreen({route}) {
             backgroundColor: 'lightgrey',
 
             marginBottom: 20,
-            }, 
-            container: {
-            marginTop: 30,
-            alignItems: 'center', 
-            flex: 1, },
+        }, 
+         container: {
+         marginTop: 30,
+         alignItems: 'center', 
+         flex: 1, },
 
-            name: {
-            fontSize: 30, 
-            marginBottom: 10,
-            }
+         name: {
+         fontSize: 30, 
+         marginBottom: 100,
+         color: 'black',
+         }
 
-            });
+         });

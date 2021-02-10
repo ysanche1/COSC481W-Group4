@@ -12,11 +12,11 @@ const messagesFDB = 'MESSAGES';
 
 //ROOM SCREEN COMPONENT
 //STATES: MESSAGES
-export default function RoomScreen({navigation, SID}) {
+export default function ChatRoomScreen({navigation, sid}) {
     //PULL MESSAGES FROM FIRESTORE
 //    const storedMessages = firestore()
 //    .collection(messagesFDB)
-//    .doc(SID)
+//    .doc(sid)
 //    .get();
     //MATCH CURRENT USER ID MATCH IS _id:1
     //        setMessages(storedMessages);

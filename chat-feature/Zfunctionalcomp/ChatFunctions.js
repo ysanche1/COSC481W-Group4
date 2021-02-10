@@ -5,7 +5,9 @@ import 'firebase/firestore';
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 
 const SESSIONSFDB = 'SESSIONS';
-
+const CURRENTSESSION = storedMessages = firestore()
+        .collection(messagesFDB)
+        .doc(SID);
 
 //PULL TOP X MESSAGES DOWN FROM FB SESSION
 function getMessages(SID) {

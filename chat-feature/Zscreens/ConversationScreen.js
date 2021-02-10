@@ -2,11 +2,9 @@ import React from 'react';
 //import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
-
-import ConversationListing from '../Zcomponents/ConversationListing';
+import { useNavigation } from '@react-navigation/native';
 
 const { width, height } = Dimensions.get('screen');
-
 
 export default function ConversationScreen({navigation}) {
     //    appendSessions() {}
@@ -16,19 +14,20 @@ export default function ConversationScreen({navigation}) {
             id: 1,
             title: "Room 1", 
             lastmessage: "Hey!",
-            time: "00:00pm"
+            time: "00:00pm", 
+            sid: '09876'
         }, 
         {
             id: 2,
             title: "Room 2", 
             lastmessage: "hi",
-            time: "00:00pm"
+            time: "00:00pm",
+            sid: '09875'
         },
     ]
 
     //GENERATE VISUAL FROM ITEM
     const RenderItem = ({ item }) => {
-        console.log(item);
         return (<ConversationListing 
                 roomtitle={item.title} 
                 lastmessage = {item.lastmessage}
@@ -44,11 +43,41 @@ export default function ConversationScreen({navigation}) {
         data = {CONV}
         renderItem = {RenderItem} 
         keyExtractor = {item => item.id.toString()}
-
 />
     </View>
 );
 }
+
+//LINE OF CONVERSATION TO BE LISTED IN SCREEN
+function ConversationListing({roomtitle, lastmessage, time, sid}){
+    const navigation = useNavigation();
+    function handlePress() {
+        //FILL CHAT ROOM WITH MESSAGES WITH RELATED SID
+        navigation.navigate('ChatRoom', { 
+                roomtitle: roomtitle,
+                sid: sid,
+            }); //OPEN CHATROOM
+
+        console.log(roomtitle);
+        console.log("SESSION: " + sid + " Entered");
+        //ADD NAVIGATION -> Chatroom after loaded
+    }
+    return (
+        <List.Item
+            title={roomtitle}
+            description= {lastmessage}
+            titleNumberOfLines={1}
+            titleStyle={styles.name}
+            descriptionStyle={styles.description}
+            descriptionNumberOfLines={1}
+            style = {styles.item}
+            right = {props => <Text style = {styles.time}>{time}</Text>
+            }
+        onPress = {() => handlePress()}
+            />
+    );
+}
+
 const styles = StyleSheet.create({
     container: {
         width: {width},        
@@ -68,7 +97,24 @@ const styles = StyleSheet.create({
     },
     listRight: {
         color: 'grey',
-    }
+    }, 
+    item: {
+        color: 'black', 
+        borderTopWidth: '1px',
+        borderTopColor: 'lightgrey',
+    },
+    time: {
+        color: 'grey',
+    }, 
+    description: {
+        color: 'grey',
+        fontSize: 15,
+    },
+    name: {
+    fontSize: 20,
+    color: 'black',
+    
+}
 });
 
 
