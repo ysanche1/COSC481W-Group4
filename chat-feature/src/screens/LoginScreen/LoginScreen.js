@@ -10,10 +10,10 @@ export default function LoginScreen({navigation}) {
     const [password, setPassword] = useState('')
 
     const onFooterLinkPress = () => {
-        navigation.navigate('Registration')
+        navigation.navigate('Registration');
     }
       
-
+    //const onLoginPress = () = {login(email, password, navigation);}
     const onLoginPress = () => {
         firebase
             .auth()

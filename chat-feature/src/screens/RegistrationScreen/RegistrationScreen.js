@@ -14,6 +14,8 @@ export default function RegistrationScreen({navigation}) {
         navigation.navigate('Login')
     }
 
+    //const onRegisterPress = () => {signup(email, password, navigation)}
+    
     const onRegisterPress = () => {
         if (password !== confirmPassword) {
             alert("Passwords don't match.")
