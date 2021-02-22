@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Title } from 'react-native-paper';
 import { StyleSheet, View, Text, ScrollView, Image } from 'react-native';
 
-import { ProfileButton } from '../Zcomponents/Buttons';
+import { ProfileButton } from '../components/Buttons';
+import { AuthContext } from '../navigation/AuthProvider';
+
+import { signOut } from '../functions/Authentication';
 
 
 //export default function ProfileScreen({route}) {
-export default function ProfileScreen({route}) {
-    console.log(route.params);
+export default function ProfileScreen({ route }) {
+        const {user} = useContext(AuthContext);
+    console.log(user.email);
+//    console.log(route.params);
     
     const {name, uid, img, thisUser} = (route.params == null) ? {name: 'Your Name', uid: 'UID', img: '', thisUser: true} : route.params;
 
+    
     console.log((thisUser ? "Your ": name + " ") + "Profile Screen");
 
     const OtherProfile = () => {
@@ -42,6 +48,7 @@ export default function ProfileScreen({route}) {
             <View style = {styles.buttonCont}>
             <ProfileButton title = 'Edit Profile'/> 
             <ProfileButton title = 'Edit Account'/> 
+            <ProfileButton title = 'Sign Out' onPress = {() => signOut()}/> 
 
             </View>
             </View>

@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 //import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../navigation/AuthProvider';
+
+import { firebase } from '../firebase/config';
 
 const { width, height } = Dimensions.get('screen');
 
 export default function ConversationScreen({navigation}) {
     //    appendSessions() {}
     //FILLE THIS WITH CONVERSATIONS
+//    console.log(firebase.auth().currentUser);
+    const {user} = useContext(AuthContext);
+//    console.log(user);
+    
     const CONV = [
         {
             id: 1,

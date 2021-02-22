@@ -3,19 +3,21 @@ import { StyleSheet, Dimensions, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 const { width, height } = Dimensions.get('screen');
 
-export function FormInput({ labelName }) {
+export function FormInput({ labelName, value, onChangeText, ...rest }) {
     return (
         <TextInput
         label={labelName}
-        style={styles.input}
+        style={styles.input}        
         numberOfLines={1}
+        {...rest }
         />
     );
 }
-export function FormButton({ title, modeValue,  ...rest }) {
+export function FormButton({ title, onPress, ...rest }) {
     return (
         <Button
-        mode={modeValue}
+        mode='contained'
+        onPress = { onPress }
         {...rest}
         style={styles.button}
         contentStyle={styles.buttonContainer}
@@ -25,12 +27,12 @@ export function FormButton({ title, modeValue,  ...rest }) {
         </Button>
     );
 }
-export function FormButtonText({ title, modeValue }) {
+export function FormButtonText({ title, onPress,  ...rest }) {
     return (
         <Button
         mode='text'
-        style={styles.txt}
-        contentStyle={styles.buttonContainer}
+        onPress = {onPress}
+        contentStyle={styles.txtButton}
         >
         <Text style = {{color: 'black'}}>{title}</Text>
 
@@ -54,8 +56,8 @@ const styles = StyleSheet.create({
         width: width / 2,
         height: height / 15,
     }, 
-    txt: {
-        marginTop: 10, 
-
+    txtButton: {
+       width: width,
+        height: height / 15,
     }
 });

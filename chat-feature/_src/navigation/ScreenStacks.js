@@ -6,12 +6,12 @@ import { IconButton } from 'react-native-paper';
 import IOSIcon from "react-native-vector-icons/Ionicons";
 
 
-import ChatRoomScreen from '../Zscreens/ChatRoomScreen';
-import ConversationScreen from '../Zscreens/ConversationScreen';
-import ProfileScreen from '../Zscreens/ProfileScreen';
-import ContactsList from '../Zscreens/ContactsList';
+import ChatRoomScreen from '../screens/ChatRoomScreen';
+import ConversationScreen from '../screens/ConversationScreen';
+import ProfileScreen from '../screens/ProfileScreen';
+import ContactsList from '../screens/ContactsList';
 
-import { MenuButton } from '../Zcomponents/Buttons';
+import { MenuButton } from '../components/Buttons';
 
 
 //PROFILE SCREEN WITH HEADER

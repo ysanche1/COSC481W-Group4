@@ -16,10 +16,11 @@ export function MenuButton() {
 const bar_width = .8 * width;
 export function ProfileButton({title, onPress}) {
     return (
-        <View style = {styles.container} onPress = {onPress}>
+        <TouchableOpacity style = {styles.container} 
+        onPress = {onPress}>
         <Text style = {styles.txt}>{title}</Text>
          <View style = {styles.div}/> 
-        </View>
+        </TouchableOpacity>
 
     );
 }

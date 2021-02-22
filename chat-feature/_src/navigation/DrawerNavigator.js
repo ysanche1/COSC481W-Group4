@@ -23,10 +23,7 @@ export default function DrawerNavigator() {
             inactiveTintColor: 'black', 
             activeBackgroundColor: 'lightgrey', 
             inactiveBackgroundColor: 'white', 
-        
-        }
-        
-        }
+        }}
         >
         
         <Drawer.Screen name="Conversations" component={ConversationStack} options = {{title: 'Home'}}/>
@@ -34,6 +31,8 @@ export default function DrawerNavigator() {
         <Drawer.Screen name= "ProfileStack" component = {ProfileStack} options = {{title: 'Your profile'}}/>
         
         <Drawer.Screen name = 'Contacts' component= {ContactStack}/>
+        
+        
         </Drawer.Navigator>
     );
 }

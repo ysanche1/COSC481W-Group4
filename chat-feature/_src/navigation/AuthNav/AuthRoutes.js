@@ -40,7 +40,7 @@ export default function Routes() {
 
     return (
         <NavigationContainer>
-        {user ? <HomeStack/> : <AuthStack/>}
+        {user ? <DrawerNavigator/> : <AuthStack/>}
         </NavigationContainer>
     );
 }
