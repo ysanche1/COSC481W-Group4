@@ -38,14 +38,16 @@ export class Profile extends FBObject{
 
 }
 
-export class Conversation {
+export class Conversation extends FBObject{
     constructor(SID, USERS, MESSAGES){
 
     }
 }
-export class Message{
+
+export class Message extends FBObject{
     constructor(MID, USER, DATE, CONTENT) {
 
     }
 }
+
 

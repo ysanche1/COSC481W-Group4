@@ -34,6 +34,7 @@ export function login(email, password) {
     })
 }
 
+//PASSWORD MTACH
 export function passwordCorrect(email, passwordEntered) {
     //GET CORRECT PASSWORD BASED ON EMAIL ENTRY
     //    'No user exists'
@@ -44,10 +45,11 @@ export function passwordCorrect(email, passwordEntered) {
 }
 
 
-
+//CREATE PROFILE, ADD TO FB
+//CREATE ACCOUNT WITH PROF REF
+//RETURN {ACCOUNT: account, PROFILE: profile}
 function addUser() {
-    //CREATE PROFILE
-    //CREATE ACCOUNT
+    
     //
     //ADD USER TO ACCOUNTS DB
     const user = firebase.auth().currentUser;
@@ -76,7 +78,8 @@ export async function signup(email, password, confirmPassword) {
             const account = new Account("New User", email, uid); 
 
             //ADD TO ACCOUNTS DB
-            const usersRef = firebase.firestore().collection('ACCOUNTS')
+            const usersRef = firebase.firestore().collection('ACCOUNTS');
+            
             usersRef
                 .doc(uid)
                 .set(account.get())
@@ -111,5 +114,9 @@ export function signOut() {
 }
 
 
+
+export function GoogleSignIn(){
+    
+}
 
 //FACCESS CURRENT USER DETAIL - firebase.auth().currentUser
