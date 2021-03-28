@@ -14,7 +14,7 @@ export default function LoginScreen({ navigation }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    console.log(user); //SHOULD BE NULL
+//    console.log(user); //SHOULD BE NULL
     
     const handleLogin = () => {
         const user = login(email, password);

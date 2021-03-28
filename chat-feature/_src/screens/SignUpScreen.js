@@ -17,13 +17,19 @@ export default function SignUpScreen({ navigation }) {
     
     const handleSignUp = () => {
         signup(email, password, confirmPassword);
+        
+//        let res = signup(email, password, confirmPassword);
+//        if(typeof res == string) navigation 
+//        else setError(res);
       //PASS ERROR MESSAGE RETURNED FROM SIGN UP TO setError(errorMessage); - ASYNC/AWAIT??
     }
     
     return (
         <View style={styles.container}>
         <Title style={styles.titleText}>Register to chat</Title>
+        
         <Text style = {{color: 'red'}}> { error } </Text>
+        
         <TextInput
         label = 'Email'
         style = { styles.input }
@@ -66,7 +72,6 @@ export default function SignUpScreen({ navigation }) {
             </View>
         );
 }
-
 
 //        SUIG UP BUTTON: disabled = {formComplete ? true : false}
 

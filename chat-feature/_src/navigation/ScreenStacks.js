@@ -11,7 +11,7 @@ import ConversationScreen from '../screens/ConversationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ContactsList from '../screens/ContactsList';
 
-import { MenuButton } from '../components/Buttons';
+import { MenuButton, AddConversationButton } from '../components/Buttons';
 
 
 //PROFILE SCREEN WITH HEADER
@@ -38,6 +38,16 @@ export function ProfileStack({props}) {
                            }
                            }}
                            component = {ProfileScreen}/>
+                           <ProfStack.Screen 
+                           name = 'EditProfile' 
+                           options= {{
+                           title: '',
+                           headerTitleStyle: {
+                           fontSize: 22, 
+                           color: 'white',
+                           }
+                           }}
+                           component = {Edit}/>
     </ProfStack.Navigator>
     )
 }
@@ -91,7 +101,9 @@ export function ConversationStack() {
         <ConvStack.Screen name = 'Conversations' 
         component= {ConversationScreen}
         options = {({ navigation }) => ({
-        headerLeft: () => (<MenuButton/>)})}/>
+        headerLeft: () => (<MenuButton/>), 
+                           headerRight: () => (<AddConversationButton/>)
+    })}/>
 
        <ConvStack.Screen 
         name = 'ChatRoom' component = {ChatRoomScreen}

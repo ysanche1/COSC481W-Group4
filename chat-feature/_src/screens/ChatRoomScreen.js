@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext } from 'react';
 import {GiftedChat} from 'react-native-gifted-chat';
+import { AuthContext } from '../navigation/AuthProvider'; //CURRENT USER 
 
 import { View, StyleSheet, FlatList } from 'react-native';
 import { List, Divider } from 'react-native-paper';
 
+import { checkMessages, getMessages, storeMessage } from '../functions/ChatCommunication';
 //import firestore from '@react-native-firebase/firestore';
 
 const messagesFDB = 'MESSAGES';
@@ -12,65 +14,47 @@ const messagesFDB = 'MESSAGES';
 
 //ROOM SCREEN COMPONENT
 //STATES: MESSAGES
-export default function ChatRoomScreen({navigation, sid}) {
-    //PULL MESSAGES FROM FIRESTORE
-//    const storedMessages = firestore()
-//    .collection(messagesFDB)
-//    .doc(sid)
-//    .get();
-    //MATCH CURRENT USER ID MATCH IS _id:1
-    //        setMessages(storedMessages);
-
+export default function ChatRoomScreen({route, navigation}) {
+        const { user } = useContext(AuthContext);
+    const {roomtitle, CID} = route.params;
+    const [messages, setMessages] = useState([]); //MESSAGES
+    const [text, setText] = useState('');
+    //load messages on scroll up or only show some messages
+    //check for new messages 
+    
+    useEffect(() => {
+        getMessages(CID).then((STOREDMESSAGES) => {
+            console.log(STOREDMESSAGES);
+            setMessages(STOREDMESSAGES);
+        }) 
+    }, []);
     
     
-    //MESSAGES
-    const [messages, setMessages] = useState([
-
-        //LOAD MESSAGES FROM SESSION
-
-        //MOCK MESSAGES
-
-        //SYSTEM MESSAGE
-        {
-            _id: 0, 
-            text: 'New room created.', 
-            createdAt: new Date().getTime(), 
-            system:true
-            //ANY OTHER CUSTOMS
-        },
-        //CHAT MESSAGE
-        {
-            _id:1, 
-            text: 'Hello', 
-            createdAt: new Date().getTime(), 
-            user: {
-                _id: 2, 
-                name: 'Test User', 
-                avatar:''
-            },
-            image: '', 
-            video: '', 
-            sent: false, //MARK AS
-            received: false, //MARK AS
-            //ANY OTHER CUSTOMS
-        }
-
-    ]);
-
+    //LISTEN FOR CHANGES TO MESSAGE ARRAY ** 3/25
+    useEffect(() => {
+        var UPDATE = checkMessages(CID, messages.length);
+        if(UPDATE != null) console.log(UPDATE);
+         else setMessages(UPDATE);
+        //IF UPDATE HAS NEW LISTING SET MESSAGES ELSE LEAVE THE SAME 
+    })
+    
     //HELPER FUNCTION: ADDS NEW MESSAGE TO PREVIOUS MESSAGES AND POSTS
-    function handleSend(newMessage = []){
+    const handleSend = (newMessage = []) => {
+        console.log(newMessage);
+        
         //SEND MESSAGES TO FIRESTORE
-        //        newMessage.sid = ''; //SESSION ID
-        //        newMessage.uid = ''; //USER ID
-        //        firestore().collection(messagesFDB).add(newMessage);
-
+        const x = storeMessage(CID, newMessage[0]);
+//        console.log(x);
+        
+        //STORE MESSAGE() -> BOOL -> POST
         setMessages(GiftedChat.append(messages, newMessage));
     }
 
     return (
-        <GiftedChat messages = {messages}
+        <GiftedChat
+        messages = {messages}
         onSend = {newMessage => handleSend(newMessage)}
-user = { {_id: 1}}
+        user = { {id: user.uid}}
 />
 );   
 }
