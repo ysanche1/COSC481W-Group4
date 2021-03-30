@@ -4,6 +4,7 @@ import { StyleSheet, View, Text, ScrollView, Image } from 'react-native';
 
 import { ProfileButton } from '../components/Buttons';
 import { AuthContext } from '../navigation/AuthProvider';
+//import icon from '../../assets/icon.png'
 
 import { signOut } from '../functions/Authentication';
 
@@ -14,7 +15,7 @@ export default function ProfileScreen({ route }) {
     console.log(user.email);
 //    console.log(route.params);
     
-    const {name, uid, img, thisUser} = (route.params == null) ? {name: 'Your Name', uid: 'UID', img: '', thisUser: true} : route.params;
+    const {name, uid, img, thisUser} = (route.params == null) ? {name: user.email, uid: 'UID', img: '../../assets/icon.png', thisUser: true} : route.params;
 
     
     console.log((thisUser ? "Your ": name + " ") + "Profile Screen");
@@ -24,7 +25,7 @@ export default function ProfileScreen({ route }) {
             <ScrollView contentContainerStyle = {{flex:1}}> 
             <View style = {styles.container}>
 
-            <Image src = {img} style = {styles.IMG}/>
+            <Image source={require('../../assets/icon.png')} style = {styles.IMG}/>
             <Text style = {styles.name}>{name}</Text>
 
             <View style = {styles.buttonCont}>
@@ -42,11 +43,11 @@ export default function ProfileScreen({ route }) {
             <ScrollView contentContainerStyle = {{flex:1}}> 
             <View style = {styles.container}>
 
-            <Image src = {img} style = {styles.IMG}/>
-            <Text style = {styles.name}>Your name</Text>
+            <Image source={require('../../assets/favicon.png')} style = {styles.IMG}/>
+            <Text style = {styles.name}>{name}</Text>
 
             <View style = {styles.buttonCont}>
-            <ProfileButton title = 'Edit Profile'/> 
+            <ProfileButton title = 'Edit Profile' onPress = {route.navigate("EditScreen")}/> 
             <ProfileButton title = 'Edit Account'/> 
             <ProfileButton title = 'Sign Out' onPress = {() => signOut()}/> 
 

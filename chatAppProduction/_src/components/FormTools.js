@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         height: height / 15,
     }, 
     txtButton: {
-        width: width,
+       width: width,
         height: height / 15,
     }
 });

@@ -12,63 +12,76 @@ import ProfileScreen from '../screens/ProfileScreen';
 import ContactsList from '../screens/ContactsList';
 
 import { MenuButton } from '../components/Buttons';
+import ContactList from '../screens/ContactsList';
 
 
 //PROFILE SCREEN WITH HEADER
-export function ProfileStack({props}) {
+export function ProfileStack({ props }) {
     console.log("Profile Stack");
 
     const ProfStack = createStackNavigator();
 
-    return ( 
+    return (
         <ProfStack.Navigator
-        initialRouteName = 'Profile'
-        screenOptions={{
-        headerStyle: {
-        backgroundColor: 'black', 
-        },
-        headerLeft: () => (<MenuButton/>)}}>
-                           <ProfStack.Screen 
-                           name = 'ProfileScreen' 
-                           options= {{
-                           title: '',
-                           headerTitleStyle: {
-                           fontSize: 22, 
-                           color: 'white',
-                           }
-                           }}
-                           component = {ProfileScreen}/>
-    </ProfStack.Navigator>
+            initialRouteName='Profile'
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: 'black',
+                },
+                headerLeft: () => (<MenuButton />)
+            }}>
+            <ProfStack.Screen
+                name='ProfileScreen'
+                options={{
+                    title: '',
+                    headerTitleStyle: {
+                        fontSize: 22,
+                        color: 'white',
+                    }
+                }}
+                component={ProfileScreen} />
+            <ProfStack.Screen
+            name='EditScreen'
+            options={{
+                title: '',
+                headerTitleStyle: {
+                    fontSize: 22,
+                    color: 'white',
+                }
+            }}
+            component={ContactList} />
+        </ProfStack.Navigator>
     )
 }
 
 export function ContactStack() {
     const ContactStack = createStackNavigator();
-    return ( 
+    return (
         <ContactStack.Navigator
-        initialRouteName = 'Contacts'
-        screenOptions={{
-        headerStyle: {
-        backgroundColor: 'black', 
-        }, 
-        headerTitleStyle: {
-                           fontSize: 22, 
-                           color: 'white',
-                           }, 
-        headerTintColor: 'white', 
-        }}>
-        
-        
-        <ContactStack.Screen name = 'Contacts' options= {{
-        title: 'Contacts', headerLeft: () => (<MenuButton/>)}}>
-        {(props) => <ContactsList fillconv = {false}/>}
-        </ContactStack.Screen>
-    
-        <ContactStack.Screen name = 'ContactProfile' options = {{title: ''}}>
-        {(props) => <ProfileScreen {...props}/>}
-        </ContactStack.Screen>
-            
-    </ContactStack.Navigator>
+            initialRouteName='Contacts'
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: 'black',
+                },
+                headerTitleStyle: {
+                    fontSize: 22,
+                    color: 'white',
+                },
+                headerTintColor: 'white',
+            }}>
+
+
+            <ContactStack.Screen name='Contacts' options={{
+                title: 'Contacts', headerLeft: () => (<MenuButton />)
+            }}>
+                {(props) => <ContactsList fillconv={false} />}
+            </ContactStack.Screen>
+
+            <ContactStack.Screen name='ContactProfile' options={{ title: '' }}>
+                {(props) => <ProfileScreen {...props} />}
+            </ContactStack.Screen>
+
+        </ContactStack.Navigator>
     )
 }
 
@@ -76,33 +89,34 @@ export function ConversationStack() {
     const ConvStack = createStackNavigator();
 
     return (
-        <ConvStack.Navigator 
-        initialRouteName='Conversations'
-        screenOptions={{
-        headerStyle: {
-        backgroundColor: 'black'
-        },
-        headerTintColor: '#ffffff',
-        headerTitleStyle: {
-        fontSize: 22, 
-        }
-        }}>
+        <ConvStack.Navigator
+            initialRouteName='Conversations'
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: 'black'
+                },
+                headerTintColor: '#ffffff',
+                headerTitleStyle: {
+                    fontSize: 22,
+                }
+            }}>
 
-        <ConvStack.Screen name = 'Conversations' 
-        component= {ConversationScreen}
-        options = {({ navigation }) => ({
-        headerLeft: () => (<MenuButton/>)})}/>
+            <ConvStack.Screen name='Conversations'
+                component={ConversationScreen}
+                options={({ navigation }) => ({
+                    headerLeft: () => (<MenuButton />)
+                })} />
 
-       <ConvStack.Screen 
-        name = 'ChatRoom' component = {ChatRoomScreen}
-        options = {
-        ({ route }) => ({
-        title: route.params.roomtitle,
-        })}
-        />
+            <ConvStack.Screen
+                name='ChatRoom' component={ChatRoomScreen}
+                options={
+                    ({ route }) => ({
+                        title: route.params.roomtitle,
+                    })}
+            />
 
         </ConvStack.Navigator>
-        );
+    );
 }
 
 

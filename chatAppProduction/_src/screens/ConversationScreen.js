@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 //import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
@@ -6,32 +6,33 @@ import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../navigation/AuthProvider';
 
 import { firebase } from '../firebase/config';
+import { getConversations, addConversation } from '../functions/AccountProfile';
 
 const { width, height } = Dimensions.get('screen');
 
 export default function ConversationScreen({navigation}) {
+    const [newConv, setNewConv] = useState(false);
     //    appendSessions() {}
     //FILLE THIS WITH CONVERSATIONS
 //    console.log(firebase.auth().currentUser);
     const {user} = useContext(AuthContext);
-//    console.log(user);
+    const [listings, setListings] = useState([]);
+   
     
-    const CONV = [
-        {
-            id: 1,
-            title: "Room 1", 
-            lastmessage: "Hey!",
-            time: "00:00pm", 
-            sid: '09876'
-        }, 
-        {
-            id: 2,
-            title: "Room 2", 
-            lastmessage: "hi",
-            time: "00:00pm",
-            sid: '09875'
-        },
-    ]
+    //LOAD CONVERSATIONS ON EVENT
+    const loadConversations = () => {
+        getConversations().then((listings) => {
+            setListings(listings);
+        });
+    }
+    //LOAD CONVERSATIONS ON FIRST RENDER
+    useEffect(() => {
+        getConversations().then((listings) => {
+            setListings(listings);
+        })
+    });
+    
+//    console.log(listings);
 
     //GENERATE VISUAL FROM ITEM
     const RenderItem = ({ item }) => {
@@ -39,7 +40,7 @@ export default function ConversationScreen({navigation}) {
                 roomtitle={item.title} 
                 lastmessage = {item.lastmessage}
                 time = {item.time}
-                sid = {item.sid}/>
+                CID = {item.CID}/>
                );
     }
 
@@ -47,7 +48,7 @@ export default function ConversationScreen({navigation}) {
         <View style = {styles.container}>
         <FlatList
         style = {styles.list}
-        data = {CONV}
+        data = {listings}
         renderItem = {RenderItem} 
         keyExtractor = {item => item.id.toString()}
 />
@@ -56,17 +57,18 @@ export default function ConversationScreen({navigation}) {
 }
 
 //LINE OF CONVERSATION TO BE LISTED IN SCREEN
-function ConversationListing({roomtitle, lastmessage, time, sid}){
+function ConversationListing({roomtitle, lastmessage, time, CID}){
     const navigation = useNavigation();
+    
     function handlePress() {
         //FILL CHAT ROOM WITH MESSAGES WITH RELATED SID
         navigation.navigate('ChatRoom', { 
                 roomtitle: roomtitle,
-                sid: sid,
+                CID: CID ,
             }); //OPEN CHATROOM
 
         console.log(roomtitle);
-        console.log("SESSION: " + sid + " Entered");
+        console.log("SESSION: " + CID + " Entered");
         //ADD NAVIGATION -> Chatroom after loaded
     }
     return (
@@ -80,14 +82,14 @@ function ConversationListing({roomtitle, lastmessage, time, sid}){
             style = {styles.item}
             right = {props => <Text style = {styles.time}>{time}</Text>
             }
-        onPress = {() => handlePress()}
+        onPress = {() => handlePress(CID)}
             />
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        //width: {width},        
+        width: {width},        
     }, 
     title:{
         color: 'black'
@@ -107,15 +109,18 @@ const styles = StyleSheet.create({
     }, 
     item: {
         color: 'black', 
-        borderTopWidth: 1,
-        borderTopColor: 'lightgrey',
+        borderBottomWidth: '1px',
+        borderBottomColor: 'lightgrey',
+        borderBottomWidth: '1px',
+        borderBottomColor: 'lightgrey',
     },
     time: {
         color: 'grey',
     }, 
     description: {
         color: 'grey',
-        fontSize: 15,
+        fontSize: 12,
+        marginTop: 10,
     },
     name: {
     fontSize: 20,

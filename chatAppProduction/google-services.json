@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "37535503320",
+    "firebase_url": "https://chatroom-b59c8-default-rtdb.firebaseio.com",
+    "project_id": "chatroom-b59c8",
+    "storage_bucket": "chatroom-b59c8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37535503320:android:fb0779163794d238cc18ad",
+        "android_client_info": {
+          "package_name": "com.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37535503320-m3i9luiq2350bj658bp0q2dlhb6qjb98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQaOZUyrf4H2EAVU2k-IvAPAGIAZjpjt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37535503320-m3i9luiq2350bj658bp0q2dlhb6qjb98.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "37535503320-et0ft2u3m73ugo84nh73nm7kn9vtbk1t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.name.chatApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37535503320:android:fcbb6a2dfd68b963cc18ad",
+        "android_client_info": {
+          "package_name": "com.chatapp2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37535503320-m3i9luiq2350bj658bp0q2dlhb6qjb98.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQaOZUyrf4H2EAVU2k-IvAPAGIAZjpjt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37535503320-m3i9luiq2350bj658bp0q2dlhb6qjb98.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "37535503320-et0ft2u3m73ugo84nh73nm7kn9vtbk1t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.name.chatApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

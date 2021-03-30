@@ -81,7 +81,7 @@ function ContactListing({name, uid, img, fillconv}){
 
 const styles = StyleSheet.create({
     container: {
-        width: {width},        
+        //width: {width},        
     }, 
         title:{
             color: 'black'
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
                         }, 
                             item: {
                                 color: 'black', 
-                                    borderTopWidth: '1px',
+                                    borderTopWidth: 1,
                                         borderTopColor: 'lightgrey',
                             }, 
                                 name: {
