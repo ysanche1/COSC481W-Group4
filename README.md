@@ -24,7 +24,6 @@ GUI - Screens and Nav
 
 
 I think we have enough to get started pretty good. Let me know if y’all need any help or explanations.
-
 # ***Implementation Plan***
 Below are the functions and features of ‘Chat App’ listed by who implemented them into the system.
 
@@ -53,9 +52,9 @@ Below are the functions and features of ‘Chat App’ listed by who implemented
 ### Profile
 ***React Native & Firebase Firestore***
 
-<ins>Morgan Iverson:</ins> Load User Name 
+<ins>Morgan Iverson:</ins> Display User Name and Bio
 
-### Contacts
+Contacts
 ***React Native & Firebase Firestore***
 
 <ins>Morgan Iverson:</ins> Load User Contacts, View Contact Profile, Search App Users, Add Contacts
@@ -69,3 +68,4 @@ Below are the functions and features of ‘Chat App’ listed by who implemented
 ***AdobeXD***
 
 <ins>Yaneli Sanchez:</ins>  [AdobeXD UI Design](https://xd.adobe.com/view/4c2876a7-9336-45db-8ff7-44ac0d75146d-197b/)
+
