@@ -1,29 +1,6 @@
 # COSC481W-Group4
-There are 3 branches auth (login/signup authentication), prof (profile management), and chat (messaging/conversations). There are also three folders of the same name. 
-
-The only things in each folder is App.js, components, screens, navigation and a .txt file with what modules are needed. 
-Please only edit the folders in their respective branch. 
-
-Also, there is a .txt file called setup in the Resources folder on how to set up the react native app environment and how to install modules through nodeJS npm. 
-
-Let me know if y’all need any more GUI/screens or components. 
-
-Per our first presentation these are the assignments and aims. 
-
-Chat - 1-1 messages and group messaging 
-(Guys - Ben, Yhayh, Jacob)
-
-Login/SignUp - Research
- (Yaneli)
-
-Profile - View/Edit
- (Morgan)
-
-GUI - Screens and Nav 
-(Morgan)
 
 
-I think we have enough to get started pretty good. Let me know if y’all need any help or explanations.
 # ***Implementation Plan***
 Below are the functions and features of ‘Chat App’ listed by who implemented them into the system.
 
@@ -39,25 +16,25 @@ Below are the functions and features of ‘Chat App’ listed by who implemented
 <ins>Ben Bruursems:</ins>  Email/Password login using  Firebase Authentication functions
 <ins>Morgan Iverson:</ins> Display Login Errors
 
-### Conversation List
+### Conversation/Chat
 ***React Native & Firebase Firestore***
 
-<ins>Morgan Iverson:</ins> Show Current Users Conversations, Open Conversation Chatroom and stored messages on click, Bold Unread messages, Listen for new Conversations and Bold, Start New Conversation from user contact list, Send/Receive/Store Messages 
+<ins>Morgan Iverson:</ins> Show Current Users Conversations, Open Conversation Chatroom and stored messages on click, Bold Unread messages, Listen for new Conversations and Bold, Start New Conversation from User Contact List, Chat Menu, Send/Receive/Store Messages 
 
 ### Navigation
 #### ***React Native Drawer Navigation***
 
-<ins>Morgan Iverson:</ins> Basic Drawer Navigator, Various Stack Navigators, Home, Contact List, Chat Room, Conversations, Profile and Search Screens
+<ins>Morgan Iverson:</ins> Basic Drawer Navigator, Various Stack Navigators, Home, Contact List, Chat Room, Conversations, Profile, Account Details, Edit Profile and Search Screens
 
 ### Profile
 ***React Native & Firebase Firestore***
 
-<ins>Morgan Iverson:</ins> Display User Name and Bio
+<ins>Morgan Iverson:</ins> Display User Name and Bio, Edit Profile, View Account Details
 
-Contacts
+### Contacts
 ***React Native & Firebase Firestore***
 
-<ins>Morgan Iverson:</ins> Load User Contacts, View Contact Profile, Search App Users, Add Contacts
+<ins>Morgan Iverson:</ins> Load User Contacts, View Contact Profile, Search App Users, Add Contacts from Search
 
 ### Sign Out
 ***Google Firebase Authentication***
