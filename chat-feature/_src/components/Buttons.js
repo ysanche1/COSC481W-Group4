@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity, Dimensions, StyleSheet, View, Text } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
+
 import { AuthContext } from '../navigation/AuthProvider'; 
+
 import { createConversation } from '../functions/Communication';
 
 import IOSIcon from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
-
 import { useNavigation } from '@react-navigation/native';
+
 const { width, height } = Dimensions.get('screen');
 
 export function MenuButton() {
@@ -43,6 +46,35 @@ export function AddConversationButton({ roomtitle, CID }) {
 );
 }
 
+export function FormButton({ title, onPress, ...rest }) {
+    return (
+        <Button
+        mode='contained'
+        onPress = { onPress }
+        {...rest}
+        style={styles.button}
+        contentStyle={styles.buttonContainer}
+        >
+        <Text style = {{color: 'white'}}>{title}</Text>
+
+        </Button>
+    );
+}
+
+export function FormButtonText({ title, onPress,  ...rest }) {
+    return (
+        <Button
+        mode='text'
+        onPress = {onPress}
+        contentStyle={styles.txtButton}
+        >
+        <Text style = {{color: 'black'}}>{title}</Text>
+
+        </Button>
+    );
+}
+
+
 const styles = StyleSheet.create({
     container: {
         width: width,
@@ -57,6 +89,18 @@ const styles = StyleSheet.create({
         fontSize: 15,
         padding: 20,
         letterSpacing: 1.5,
+    }, 
+     button: {
+        marginTop: 10, 
+        backgroundColor: 'black',
+    },
+    buttonContainer: {
+        width: width / 2,
+        height: height / 15,
+    }, 
+    txtButton: {
+       width: width,
+        height: height / 15,
     }
 
 });

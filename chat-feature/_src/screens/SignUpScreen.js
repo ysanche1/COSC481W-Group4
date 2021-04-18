@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Dimensions, Text } from 'react-native';
 import { Title, IconButton, Button, TextInput } from 'react-native-paper';
 
-import { FormInput, FormButton } from '../components/FormTools';
+import { FormButton } from '../components/Buttons';
 import { signup } from '../functions/Authentication';
 
 const { width, height } = Dimensions.get('screen');

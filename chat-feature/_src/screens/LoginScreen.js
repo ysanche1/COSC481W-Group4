@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions, Text } from 'react-native';
 import { Title, TextInput } from 'react-native-paper';
 const { width, height } = Dimensions.get('screen');
 
-import { FormInput, FormButton, FormButtonText } from '../components/FormTools';
+import { FormButton, FormButtonText } from '../components/BUttons';
 
 import { login } from '../functions/Authentication';
 import { AuthContext } from '../navigation/AuthProvider'

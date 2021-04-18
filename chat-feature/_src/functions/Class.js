@@ -43,10 +43,7 @@ export class Profile extends FBObject{
 }
 
 export class Conversation extends FBObject{
-<<<<<<< HEAD
-    constructor(SID, USERS, MESSAGES){
 
-=======
     constructor(CID, USERS, MESSAGES, CREATEDAT){
         super();
         this.CID = CID;
@@ -54,16 +51,9 @@ export class Conversation extends FBObject{
         this.MESSAGES = MESSAGES;
         this.LASTMESSAGE = this.MESSAGES[this.MESSAGES.length - 1].TEXTCONTENT;
         this.LASTEDITED = this.MESSAGES[this.MESSAGES.length - 1].CREATEDAT;
->>>>>>> Morgan
     }
     
 }
-<<<<<<< HEAD
-
-export class Message extends FBObject{
-    constructor(MID, USER, DATE, CONTENT) {
-=======
->>>>>>> Morgan
 
 export class Message extends FBObject{
     constructor(MID, USER, TIME, TEXTCONTENT, IMGCONTENT) {
@@ -78,10 +68,4 @@ export class Message extends FBObject{
     }
 }
 
-<<<<<<< HEAD
-=======
-export class Contact{
-    
-}
->>>>>>> Morgan
 

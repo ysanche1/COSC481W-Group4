@@ -1,1 +1,0 @@
-//https://medium.com/backticks-tildes/customizing-react-navigation-drawer-cf60c01a296a
