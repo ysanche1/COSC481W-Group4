@@ -51,7 +51,6 @@ Below are the functions and features of ‘Chat App’ listed by who implemented
 
 The instructions of how to use ‘Chat App’ are listed below according to action. 
 
-
 <table>
   <tr>
    <td colspan="2" ><strong><em>Authentication</em></strong>
@@ -60,7 +59,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Sign Up</em></strong>
+   <td><em>Sign Up</em>
 <ol>
 
 <li><em>Select ‘New user? Join here’</em>
@@ -75,7 +74,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Log In</em></strong>
+   <td><em>Log In</em>
 <ol>
 
 <li><em>Enter the email and six character password you created at sign up</em>
@@ -88,7 +87,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Sign Out </em></strong>
+   <td><em>Sign Out </em>
 <ol>
 
 <li>Go to ‘Your Profile’ from Navigation Drawer
@@ -107,7 +106,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Navigation</em></strong>
+   <td><em>Navigation</em>
 <ol>
 
 <li>Press the hamburger button <strong>&lt;Icon here></strong> on the upper left corner
@@ -124,7 +123,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>View Profile</em></strong>
+   <td><em>View Profile</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -137,7 +136,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Edit profile</em></strong>
+   <td><em>Edit profile</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -159,7 +158,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>View Account Details</em></strong>
+   <td><em>View Account Details</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -180,7 +179,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Add Contacts</em></strong>
+   <td><em>Add Contacts</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -199,7 +198,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>View Contacts</em></strong>
+   <td><em>View Contacts</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -220,7 +219,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>New Conversation</em></strong>
+   <td><em>New Conversation</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -241,7 +240,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Existing Conversation</em></strong>
+   <td><em>Existing Conversation</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -258,7 +257,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
   <tr>
-   <td><strong><em>Conversation Menu</em></strong>
+   <td><em>Conversation Menu</em>
 <ol>
 
 <li>Open Navigation Drawer
@@ -279,6 +278,4 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
    </td>
   </tr>
 </table>
-
-
 
