@@ -1,60 +1,86 @@
-import React, {useState, useEffect, useContext } from 'react';
-import {GiftedChat} from 'react-native-gifted-chat';
+import React, { useState, useEffect, useContext,  } from 'react';
+import { GiftedChat} from 'react-native-gifted-chat';
 import { AuthContext } from '../navigation/AuthProvider'; //CURRENT USER 
-
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { List, Divider } from 'react-native-paper';
+import { useNavigation, NavigationActions } from '@react-navigation/native';
+import IOSIcon from "react-native-vector-icons/Ionicons";
 
-import { checkMessages, getMessages, storeMessage } from '../functions/ChatCommunication';
-//import firestore from '@react-native-firebase/firestore';
 
-const messagesFDB = 'MESSAGES';
-//https://amanhimself.dev/blog/chat-app-with-react-native-part-1/
-
+import { checkMessages, getMessages, storeMessage, readMessages } from '../functions/Communication';
+import { getCurrentUserAccount } from '../functions/AccountProfile';
 
 //ROOM SCREEN COMPONENT
 //STATES: MESSAGES
 export default function ChatRoomScreen({route, navigation}) {
-        const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);    
     const {roomtitle, CID} = route.params;
     const [messages, setMessages] = useState([]); //MESSAGES
     const [text, setText] = useState('');
-    //load messages on scroll up or only show some messages
-    //check for new messages 
-    
-    useEffect(() => {
-        getMessages(CID).then((STOREDMESSAGES) => {
-            console.log(STOREDMESSAGES);
-            setMessages(STOREDMESSAGES);
-        }) 
-    }, []);
-    
-    
-    //LISTEN FOR CHANGES TO MESSAGE ARRAY ** 3/25
-    useEffect(() => {
-        var UPDATE = checkMessages(CID, messages.length);
-        if(UPDATE != null) console.log(UPDATE);
-         else setMessages(UPDATE);
-        //IF UPDATE HAS NEW LISTING SET MESSAGES ELSE LEAVE THE SAME 
-    })
-    
-    //HELPER FUNCTION: ADDS NEW MESSAGE TO PREVIOUS MESSAGES AND POSTS
-    const handleSend = (newMessage = []) => {
-        console.log(newMessage);
-        
-        //SEND MESSAGES TO FIRESTORE
-        const x = storeMessage(CID, newMessage[0]);
-//        console.log(x);
-        
-        //STORE MESSAGE() -> BOOL -> POST
-        setMessages(GiftedChat.append(messages, newMessage));
-    }
 
-    return (
-        <GiftedChat
-        messages = {messages}
-        onSend = {newMessage => handleSend(newMessage)}
-        user = { {id: user.uid}}
-/>
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity 
+                onPress={() => navigation.navigate("ChatMenu", 
+                                                   {CID: CID, 
+                                                    roomtitle: roomtitle})}>
+                              <IOSIcon name="ios-menu" style = {{marginRight: 10, color: 'white'}} size={30} />
+                              </TouchableOpacity>
+                             )}
+                             )
+}, [navigation]);    
+
+//LPAD MESSAGES STORED IN FIREBASE
+useEffect(() => {
+    getMessages(CID).then((m) => {
+        //                        console.log(m);
+        //            setMessages(m);
+        handleSend(m, true);
+    }) 
+}, []);
+
+//LISTEN FOR CHANGES TO MESSAGE ARRAY ** 3/25
+useEffect(() => {
+    checkMessages(CID, messages.length, handleSend);
+
+}, []);
+
+//ON CHNAGE OF MESSAGES SET UNREAD MESSAGES TO FALSE FOR CURRENT USER
+useEffect(() => {
+    console.log("MESSAGE CHANGE");
+    //SET UNREAD MESSAGES TO FALSE
+    readMessages(CID);
+}, [ messages ])
+
+//ADDS NEW MESSAGE TO PREVIOUS MESSAGES AND POSTS
+const handleSend = (newMessage = [], stored) => {
+    //        console.log(newMessage);
+
+    //SEND MESSAGES TO FIRESTORE
+    if(!stored) storeMessage(CID, newMessage[0]);
+
+    //STORE MESSAGE() -> BOOL -> POST
+    setMessages(GiftedChat.append(messages, newMessage));
+}
+
+
+return (
+    <View style={{backgroundColor: 'white', flex: 1}}>
+    <GiftedChat
+    renderAvatar = {null}
+    renderUsernameOnMessage = {true}
+    messages = { messages }
+    onSend = {newMessage => handleSend(newMessage, false)}
+user = { {_id: user.uid, 
+       }}
+       />
+</View>
 );   
 }
+
+//renderAvatar={null}
+
+//renderLoading
+// showUserAvatar={true}
+// showAvatarForEveryMessage={true}

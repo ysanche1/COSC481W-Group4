@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { TouchableOpacity, Dimensions, StyleSheet, View, Text } from 'react-native';
 import { AuthContext } from '../navigation/AuthProvider'; 
-import { createConversation } from '../functions/ChatCommunication';
+import { createConversation } from '../functions/Communication';
 
 import IOSIcon from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
@@ -30,13 +30,14 @@ export function ProfileButton({title, onPress}) {
     );
 }
 
-export function AddConversationButton() {
-    const { user } = useContext(AuthContext);      
-//    console.log(user);
-    
+export function AddConversationButton({ roomtitle, CID }) {
+    const { user } = useContext(AuthContext); 
+    const navigation = useNavigation();
+//    console.log(navigation);
     
     return (<TouchableOpacity 
-            onPress={() => createConversation([user.uid])}>
+            onPress={() =>  {navigation.navigate('NewChat'); //OPEN CHATROOM
+}}>
         <MaterialIcon name="chat-bubble" style = {{marginRight: 15, color: 'white'}} size={30} />
             </TouchableOpacity>
 );

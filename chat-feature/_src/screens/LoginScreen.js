@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, Text } from 'react-native';
 import { Title, TextInput } from 'react-native-paper';
 const { width, height } = Dimensions.get('screen');
 
@@ -11,20 +11,25 @@ import { AuthContext } from '../navigation/AuthProvider'
 
 export default function LoginScreen({ navigation }) {
     const { user } = useContext(AuthContext); //GET CURRENT USER AND ALL DATA
+    const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-//    console.log(user); //SHOULD BE NULL
     
-    const handleLogin = () => {
-        const user = login(email, password);
-        if(user != null) navigation.navigate('Home', { user });
+    const handleLogin = async() => {
+        const RES = await login(email, password);
+        if(RES != null) setError(RES);
+//        if(RES == null) //navigation.navigate('Conversations', { user });
+//        else setError(RES);
     }
     
-    
+//    console.log(error)
     return (
         <View style = {styles.container}>
         <Title style={styles.titleText}>Welcome to Chat app</Title>
+        
+        <Text style = {{color: 'red', maxWidth: "70%"}}> { error } </Text>
+
         <TextInput
         label = 'Email'
         style = { styles.input }
@@ -46,7 +51,7 @@ export default function LoginScreen({ navigation }) {
         title='Login'
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
-        onPress={() => login(email, password)}
+        onPress={() => {handleLogin()}}
         />
             <FormButtonText
         title='New user? Join here'

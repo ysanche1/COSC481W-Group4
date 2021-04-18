@@ -9,19 +9,21 @@ const { width, height } = Dimensions.get('screen');
 
 
 export default function SignUpScreen({ navigation }) {
+    const [first, setFirst] = useState('');
+    const [last, setLast] = useState('');
+    
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('Error Messages Here');
-    const formComplete = () => {return (email != '' && password != '' && confirmPassword != '')}
+    const [error, setError] = useState('');
     
-    const handleSignUp = () => {
-        signup(email, password, confirmPassword);
+    
+    const handleSignUp = async() => {
         
-//        let res = signup(email, password, confirmPassword);
-//        if(typeof res == string) navigation 
-//        else setError(res);
-      //PASS ERROR MESSAGE RETURNED FROM SIGN UP TO setError(errorMessage); - ASYNC/AWAIT??
+        const RES = await signup(first, last, email, password, confirmPassword);
+        console.log(RES);
+        if(RES != null) setError(RES);
+
     }
     
     return (
@@ -30,6 +32,22 @@ export default function SignUpScreen({ navigation }) {
         
         <Text style = {{color: 'red'}}> { error } </Text>
         
+        <TextInput
+        label = 'First name'
+        style = { styles.input }
+        numberOfLines= {1}
+        value = { first }
+        autoCapitalize='none'
+        onChangeText= { (input) => { setFirst(input)} }
+        />
+    <TextInput
+        label = 'Last Name'
+        style = { styles.input }
+        numberOfLines= {1}
+        value = { last }
+        autoCapitalize='none'
+        onChangeText= { (input) => { setLast(input)} }
+        />
         <TextInput
         label = 'Email'
         style = { styles.input }

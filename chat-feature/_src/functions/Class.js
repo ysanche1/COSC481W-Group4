@@ -19,13 +19,14 @@ class FBObject {
 }
 
 export class Account extends FBObject{
-    constructor(FNAME, EMAIL, UID, CONVERSATIONS){
+    constructor(EMAIL, UID, CONVERSATIONS, PROFILE){
         super();
-        this.FNAME = FNAME;
         this.EMAIL = EMAIL;
         this.UID = UID;
         this.CONVERSATIONS = CONVERSATIONS;
         //CREATE PROFILE REF
+        this.PROFILE = PROFILE;
+        this.CONTACTS = [];
     }
 
 } 
@@ -36,6 +37,7 @@ export class Profile extends FBObject{
         this.FNAME = FNAME;
         this.LNAME = LNAME;
         this.IMG = IMG;
+        this.BIO = "Hi, My name is " + this.FNAME + "! Let's Chat!";
     }
 
 }
