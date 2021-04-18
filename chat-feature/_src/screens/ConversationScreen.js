@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 //import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
@@ -6,32 +6,23 @@ import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../navigation/AuthProvider';
 
 import { firebase } from '../firebase/config';
+import { addConversation } from '../functions/AccountProfile';
+import { getConversations, getCurrentConversation, checkNewConversation, checkNewMessages, readMessages } from '../functions/Communication';
+import { AddConversationButton } from '../components/Buttons';
+//import Modal from 'react-native-modal'; https://github.com/react-native-modal/react-native-modal
 
 const { width, height } = Dimensions.get('screen');
 
-export default function ConversationScreen({navigation}) {
-    //    appendSessions() {}
-    //FILLE THIS WITH CONVERSATIONS
-//    console.log(firebase.auth().currentUser);
-    const {user} = useContext(AuthContext);
-//    console.log(user);
-    
-    const CONV = [
-        {
-            id: 1,
-            title: "Room 1", 
-            lastmessage: "Hey!",
-            time: "00:00pm", 
-            sid: '09876'
-        }, 
-        {
-            id: 2,
-            title: "Room 2", 
-            lastmessage: "hi",
-            time: "00:00pm",
-            sid: '09875'
-        },
-    ]
+export default function ConversationScreen({ navigation }) {
+    const { user } = useContext( AuthContext );
+    const [listings, setListings] = useState([]);
+
+    /** SHOUDL FILL CONVERSATIONS REPLACE NEED FOR GET COnv **/
+    useEffect(() => {
+        checkNewConversation(listings, setListings);
+        //        console.log(listings);
+    }, []);
+
 
     //GENERATE VISUAL FROM ITEM
     const RenderItem = ({ item }) => {
@@ -39,7 +30,7 @@ export default function ConversationScreen({navigation}) {
                 roomtitle={item.title} 
                 lastmessage = {item.lastmessage}
                 time = {item.time}
-                sid = {item.sid}/>
+                CID = {item.CID}/>
                );
     }
 
@@ -47,7 +38,7 @@ export default function ConversationScreen({navigation}) {
         <View style = {styles.container}>
         <FlatList
         style = {styles.list}
-        data = {CONV}
+        data = {listings}
         renderItem = {RenderItem} 
         keyExtractor = {item => item.id.toString()}
 />
@@ -56,33 +47,55 @@ export default function ConversationScreen({navigation}) {
 }
 
 //LINE OF CONVERSATION TO BE LISTED IN SCREEN
-function ConversationListing({roomtitle, lastmessage, time, sid}){
+//CONSIDER ADDING UNREADE MESSAGE PROP - BOLD ROOM TITLE IF UNREAD
+function ConversationListing({roomtitle, lastmessage, time, CID}){
     const navigation = useNavigation();
+    const [newMSG, setNewMSG] = useState(false);
+    const [lastMessageDisplay, setLastMessage] = useState(lastmessage);
+    const [timeDisplay, setTime] = useState(time);
+
+
+    //BOLD LISTING IF UNREAD MESSAGE OR NEW CONVERSATION- /** TEST 2 DEVICES**/
+    useEffect(() => {
+        checkNewMessages(CID, lastmessage, (d, UNREADMESSAGES) => {
+            //            console.log(d);
+            //            console.log(UNREADMESSAGES);
+            if(UNREADMESSAGES) {
+                setLastMessage(d.MESSAGES[d.MESSAGES.length - 1].TEXTCONTENT);
+                setTime(d.MESSAGES[d.MESSAGES.length - 1].TIME);
+                setNewMSG(true);
+            }
+            else {
+                setNewMSG(false);
+            }
+        })
+    }, []);
+
     function handlePress() {
+        //SET UNREAD MESSAGES TO FALSE
+        readMessages(CID);
         //FILL CHAT ROOM WITH MESSAGES WITH RELATED SID
         navigation.navigate('ChatRoom', { 
-                roomtitle: roomtitle,
-                sid: sid,
-            }); //OPEN CHATROOM
+            roomtitle: roomtitle,
+            CID: CID ,
+        }); //OPEN CHATROOM
 
-        console.log(roomtitle);
-        console.log("SESSION: " + sid + " Entered");
-        //ADD NAVIGATION -> Chatroom after loaded
     }
+
     return (
         <List.Item
-            title={roomtitle}
-            description= {lastmessage}
-            titleNumberOfLines={1}
-            titleStyle={styles.name}
-            descriptionStyle={styles.description}
-            descriptionNumberOfLines={1}
-            style = {styles.item}
-            right = {props => <Text style = {styles.time}>{time}</Text>
-            }
-        onPress = {() => handlePress()}
-            />
-    );
+        title={roomtitle}
+        description= { lastMessageDisplay }
+        titleNumberOfLines={1}
+        titleStyle={ newMSG ? styles.boldName : styles.name } /** TEST **/
+        descriptionStyle={newMSG ? styles.boldDescription : styles.description}
+        descriptionNumberOfLines={1}
+        style = {styles.item}
+        right = {props => <Text style = {newMSG ? styles.boldTime : styles.time}>{ timeDisplay }</Text>
+        }
+        onPress = {() => handlePress(CID)}
+/>
+);
 }
 
 const styles = StyleSheet.create({
@@ -93,6 +106,7 @@ const styles = StyleSheet.create({
         color: 'black'
     }, 
     list: {
+        backgroundColor: 'white',
     },
     listTitle: {
         color: 'black',
@@ -107,21 +121,37 @@ const styles = StyleSheet.create({
     }, 
     item: {
         color: 'black', 
-        borderTopWidth: '1px',
-        borderTopColor: 'lightgrey',
+        borderBottomWidth: '1px',
+        borderBottomColor: 'lightgrey',
+        borderBottomWidth: '1px',
+        borderBottomColor: 'lightgrey',
     },
     time: {
         color: 'grey',
     }, 
+    boldTime: {
+        color: 'grey',
+        fontWeight: 'bold'
+    },
     description: {
         color: 'grey',
-        fontSize: 15,
+        fontSize: 12,
+        marginTop: 10,
+    },
+    boldDescription: {
+        color: 'grey',
+        fontSize: 12,
+        marginTop: 10,
+        fontWeight: 'bold',
     },
     name: {
-    fontSize: 20,
-    color: 'black',
-    
-}
+        fontSize: 20,
+        color: 'black',
+
+    }, 
+    boldName: {
+        fontSize: 20,
+        color: 'black',
+        fontWeight: 'bold'
+    }
 });
-
-

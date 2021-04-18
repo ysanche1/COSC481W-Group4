@@ -1,122 +1,116 @@
 import { firebase } from '../firebase/config';
-import { Account } from './Class' //CLASS OBJECTS 
+import { Account, Profile, Conversation, getCurrentDateTime, Message } from './Class' //CLASS OBJECTS 
 
-//SEND ALERTS TO ERROR TEXT ON LOGIN OR SIGN UP PAGE
-//LOGIN - RETURN USER OBJECT OR ERROR MESSAGE 
-export function login(email, password) {
-    console.log("Logging In...");
-    firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then((response) => {
-        const uid = response.user.uid
-        const usersRef = firebase.firestore().collection('ACCOUNTS')
-        usersRef
-            .doc(uid)
-            .get()
-            .then(firestoreDocument => {
-            if (!firestoreDocument.exists) {
-                alert("User does not exist.")
-                return;
-            }
-            const user = firestoreDocument.data();
-            console.log(user);
-            return user;
-        })
-            .catch(error => {
-            alert(error);
-            return null;
-        });
-    })
-        .catch(error => {
-        alert(error);
-        return null;
-    })
-}
+/**************** SIGN UP *****************/
+//CHECK FOR ERRORS, CREATE ACCOUNT AND PROFIEL OBJ ADD TO DB, LOG IN
+export function signup(first, last, email, password, confirmPassword) {
+    var ERROR = false;
+    var MESSAGE = '';
+    const p = [];
+    const PR = passwordRules(password, confirmPassword);
 
-//PASSWORD MTACH
-export function passwordCorrect(email, passwordEntered) {
-    //GET CORRECT PASSWORD BASED ON EMAIL ENTRY
-    //    'No user exists'
-    //    return false;
-    //    else
-    //   return passwordEntered == userPassword;
-    //    
-}
-
-
-//CREATE PROFILE, ADD TO FB
-//CREATE ACCOUNT WITH PROF REF
-//RETURN {ACCOUNT: account, PROFILE: profile}
-function addUser() {
-    
-    //
-    //ADD USER TO ACCOUNTS DB
-    const user = firebase.auth().currentUser;
-    const ACCOUNTS = firebase.firestore().collection('ACCOUNTS');
-    ACCOUNTS
-        .doc(user.uid)
-        .set(new Account(user.name, user.email, user.uid));
-}
-
-//SIGN UP
-//RETURN ERROR FOR DISPLAY OR USER FOR LOGIN
-export async function signup(email, password, confirmPassword) {
-    var r = 0;
-    if(passwordMatch(password, confirmPassword)){
+    //FORM COMPLETE TEST
+    if(first == '' || last == '' || email == '' || password == '' || confirmPassword == ''){
+        console.log('CMP');
+        ERROR = true;
+        MESSAGE = 'Please complete all parts of Sign Up';
+    }
+    //PASSWORDS MATCH TEST
+    else if(!PR.state){
+        console.log('PM');
+        ERROR = !PR.state;
+        MESSAGE = PR.message;
+    }
+    else{
         console.log("Signing Up...");
         //CREATE USER - UNIQUE EMAIL, 6 CHAR PASS
-        firebase
-            .auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then((response) => {
-
-            //GENERATE USER ID
-            const uid = response.user.uid
+        p.push(firebase
+               .auth()
+               .createUserWithEmailAndPassword(email, password)
+               .then((r) => {
 
             //CREATE NEW ACCOUNT
-            const account = new Account("New User", email, uid); 
+            const account = new Account(email, r.user.uid, [], ((new Profile(first, last, null, 0)).toFirestore())); 
 
-            //ADD TO ACCOUNTS DB
-            const usersRef = firebase.firestore().collection('ACCOUNTS');
-            
-            usersRef
-                .doc(uid)
-                .set(account.get())
-                .then(() => {
-                return {user: account};
-            })
-                .catch((error) => {
-                alert(error);
-                console.log(error);
-            });
+            //ADD NEW ACCOUNT AND PORFILE TO COLLECTION
+            const userAdded = addUser(account);
+            console.log(userAdded);
         })
-            .catch((error) => {
-            alert(error);
-            console.log(error);
+               .catch((e) => {
+            ERROR = true;
+            MESSAGE = e.message;
+            //DELETE CURRENT USER - IF ERROR
+           var user = firebase.auth().currentUser;
+            if(user != null) user.delete()
+        })
+              )
+
+        return Promise.all(p).then( () => {
+            return (ERROR ? MESSAGE : null);
         });
     }
-    else {
-        return "Passwords do not match";
-    }
+    return (ERROR ? MESSAGE : null);
 }
 
-export function passwordMatch(password, confirmPassword) {
-    if (password != confirmPassword) {alert("Paswords do not match"); return false;}
-    return true;
+//ADD USER ACCOUNT/PROFILE TO FB DATABASE
+function addUser(account) {
+    console.log("Adding Account...");
+    console.log(account.UID);
+    const p = [];
+    var SUCCESS = true;
+
+    //ADD TO ACCOUNTS DB
+    firebase.firestore().collection('ACCOUNTS')
+        .doc(account.UID)
+        .set(account.toFirestore())
+        .then(() => {
+            console.log("ADDED");
+        })
+        .catch((e) => {
+            //alert(e);
+            console.log(e);
+            SUCCESS = false;
+            return e;
+        })
+
+    return SUCCESS;
 }
 
-//CHECK FRO EXISTING EMAIL
-//SIGN OUT
+//CHECK PASSWORD RULES FOR SIGN UP
+export function passwordRules(password, confirmPassword) {
+    //1: PASSWORD LENGTH (password.length >= #)
+    //2: MATCH (password)
+    return {state: password == confirmPassword && password != '', message: 'Passwords do not match' };
+}
+
+/**************** LOG IN *****************/
+//CHECK FOR ERRORS, LOG IN USER 
+export function login(email, password) {
+    var ERROR = false;
+    var MESSAGE = '';
+    console.log("Logging In...");
+    const p = [];
+    var USER = null;
+
+    p.push(firebase
+           .auth()
+           .signInWithEmailAndPassword(email, password)
+           .catch(e => {
+        MESSAGE += e.message;
+        ERROR = true;
+    })
+          );
+
+    return Promise.all(p).then(() => {
+        console.log(ERROR);
+        console.log(MESSAGE);
+        console.log(USER);
+        return (ERROR ? MESSAGE : USER);
+    });
+}
+
+/**************** SIGN OUT *****************/
 export function signOut() {
     console.log("Signing out...");
     return (firebase.auth().signOut());
 }
-
-
-
-export function GoogleSignIn(){
-    
-}
-
-//FACCESS CURRENT USER DETAIL - firebase.auth().currentUser
