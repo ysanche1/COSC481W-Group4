@@ -8,7 +8,7 @@
     1. [Conceptual Design]()
     2. [Functional Requirements](#functional-requirements)
     3. [System Requirements](#system-requirements)
-    4. [Implementation Plan]()
+    4. [Implementation Plan](#implementation-plan)
     5. [Application Programs]()
         1. [Create React Native Environment]()
         2. [Download Source Code]()
@@ -18,7 +18,7 @@
     6. [Descriptiion of Programs]()
   
 
-## **_User Manual_**
+## **_3. User Manual_**
 The instructions of how to use ‘Chat App’ are listed below according to action. 
 <table> <tr> <td colspan="2" ><strong><em>Authentication</em></strong><p><em>How to create an account and log into and sign out of your account on ’Chat App’.</em> </td> </tr> <tr> <td><em>Sign Up</em><ol><li><em>Select ‘New user? Join here’</em><li><em>Enter your first name, last name, email and a six character password </em><li><em>Press ‘Sign Up’</em></li></ol> </td> <td>(3) </td> </tr> <tr> <td><em>Log In</em><ol><li><em>Enter the email and six character password you created at sign up</em><li><em>Press ‘Login’</em></li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Sign Out </em><ol><li>Go to ‘Your Profile’ from Navigation Drawer<li>Press ‘Sign Out’</li></ol> </td> <td>(2) </td> </tr> <tr> <td colspan="2" ><strong><em>Navigation</em></strong><p><em>How to navigate between screens on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Navigation</em><ol><li>Press the hamburger button <strong>&lt;Icon here></strong> on the upper left corner</li></ol> </td> <td>(1) </td> </tr> <tr> <td colspan="2" ><strong><em>Account</em></strong><p><em>How to view and edit profile and view account details on ‘Chat App’.</em> </td> </tr> <tr> <td><em>View Profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ </li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Edit profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Select ‘Edit Profile’ <li>Enter changes to bio<li>Press ‘Submit Changes’<p>*Image upload not functional</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Account Details</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Press ‘View Account Details’</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Contacts</em></strong><p><em>How to add contacts and view your contact list on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Add Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Search’ <li>Search by name (Accounts not already in contacts)<li>View Profile on click<li>Add contact from profile ro go back to search (reset)</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Contacts List’ <li>(Optional) Use the search bar to search contacts</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Chat</em></strong><p><em>How to start a new conversation, enter an existing conversation and view the menu of a conversation on ‘Chat App’.</em> </td> </tr> <tr> <td><em>New Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Chat Bubble Icon <strong>&lt;Icon here></strong> in upper right corner<li>Use the search bar to enter the name of the user you are looking for<li>Select a name to add them to the conversation<li>Select ‘Chat Now!’</li></ol> </td> <td>(6) </td> </tr> <tr> <td><em>Existing Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select the Conversation you'd like to enter<li>Start typing and press send</li></ol> </td> <td>(4) </td> </tr> <tr> <td><em>Conversation Menu</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Conversation you'd like to enter<li>Select the hamburger icon <strong>&lt;Icon here></strong> in the upper right corner<li>(Optional) View chat member profile by pressing their name<li>(Optional) Add members who are not already contacts</li></ol> </td> <td>(6) </td> </tr></table>
 [Back to Top](#project-report-chat-app)
@@ -27,7 +27,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
 # **_Implementation Manual_**
 
 
-## _Functional Requirements_
+## _2. Functional Requirements_
 
 
 The functional requirements of ‘Chat App’ are listed below according to the function category.
@@ -110,7 +110,7 @@ Users should be able to navigate the app using the navigation drawer.
 [Back to Top](#project-report-chat-app)
 
 
-## **_System Requirements_**
+## **_3. System Requirements_**
 
 The system requirements of ‘Chat App’ are listed below according to the function category.
 
@@ -189,7 +189,7 @@ Users can access the various Navigations stack from the Navigation drawer.
 [Back to Top](#project-report-chat-app)
 
 
-## **_Implementation Plan_**
+## **_4. Implementation Plan_**
 Below are the functions and features of ‘Chat App’ listed by who implemented them into the system.
 
  **Sign Up**
@@ -257,6 +257,163 @@ _Implementation Manual_
 <ins>Yhayh Thabet:</ins> Functional Requirements
 
 <ins>Morgan Iverson:</ins> System Requirements, Conceptual Design, Implementation Plan, Node Modules, Github Download, Code Listing, React Native Environment Set Up
+
+
+[Back to Top](#project-report-chat-app)
+
+## **_5. Application programs_**
+This document lists instructions for setting up the development environment to edit and run ‘Chat App’.
+
+### **_Create React Native Environment_**
+These are instructions on how to create an environment to run a React Native App.
+
+1. Ensure you have NodeJS installed [Installation Guide Here](https://www.tutorialspoint.com/nodejs/nodejs_environment_setup.htm)
+2. Go to Terminal
+3. Install create-react-native-app
+```npm install -g create-react-native-app```
+
+4. cd to where you want your app to be
+5. Create your project by entering the following line in Terminal
+
+```create-react-native-app MyProjectName```
+
+
+### **_How to download ‘Chat App’ source code from Github_**
+Below is a link to download a zip file containing the ‘Chat App’ source code from the main branch: 
+[https://github.com/ysanche1/COSC481W-Group4/archive/refs/heads/main.zip](https://github.com/ysanche1/COSC481W-Group4/archive/refs/heads/main.zip)
+
+These are instructions on how to add files to your React Native App.
+
+1. Copy the unzipped files (‘_src’ folder and‘package.json’ file) into your project folder (where App.js is located)
+2. Open App.js
+3. Replace the entire contents of the file with the following code
+
+```
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import Providers from './_src/navigation/index.js';
+
+export default function App() {
+  return (<Providers/>);
+}
+```
+
+
+### How connect ‘Chat App’ to Google Firebase
+These are instructions on how to permit access of your App to Google Firebase features including, Authentication and Firestore.
+ 1. 
+
+
+
+
+### **_Node Modules_**
+These are instructions on how to install the Node Modules required to run ‘Chat App’.
+
+**Option 1:**
+1. Ensure you have Node or Yarn installed on your computer
+2. Ensure the ‘package.json’ file copied from Github is in the same folder as App.js
+3. Enter Terminal 
+4. cd into the project folder (where App.js)
+5. Run the following command in terminal
+```npm install```
+
+**Option 2:**
+1. Ensure you have Node or Yarn installed on your computer
+2. Ensure the ‘package.json’ file copied from Github is in the same folder as App.js
+3. Enter Terminal 
+4. cd into the project folder (where App.js)
+5. Run the following command in terminal where <package-name> is the name of the module(s) to be installed
+```
+npm install <package-name> <package-name> <package-name>
+```
+
+This is a listing of the node modules and their source. 
+
+
+
+### **_How to run ‘Chat App’_**
+These are instructions on how to run ‘Chat App’ from terminal.
+
+1. Ensure you have the node module ‘expo’ installed
+2. Enter Terminal 
+3. cd into the project folder (where App.js)
+4. Enter the following line into terminal
+```expo start```
+
+[Back to Top](#project-report-chat-app)
+
+
+## **_Description of Programs_**
+This is a description of all the source files for ‘Chat App’.
+
+**_components_**
+
+This folder holds all components for ‘Chat App’ specifically buttons.
+
+| _Buttons.js_ - This file holds all the button components (ProfileButton, AddConversationButton, FormButton/FormButtonText)
+
+
+**_firebase_**
+
+This folder holds the configuration file for firebase.
+
+| _config.js_ -This file contains the object containing keys for firebase connection.
+
+
+**_functions_**
+
+This folder contains all the functions to run ‘Chat App’.
+
+| _AccountProfile.js_ - This file contains functions for user account and profile management including, getting/editing Profile data and getting account Data such as contacts and conversations.
+
+| _Authentication.js_ - This file contains functions for user authentication to facilitate login, sign up, sign out and account/profile creation.
+
+| _Class.js_ - This file contains class files which help facilitate storage of data in Google Firebase Firestore database. Classes include: FBObject, Account, Conversation, Message and Profile
+
+| _Communcation.js_ - This file contains functions for user communication including functions that get all user conversations for display, load messages of each conversation for viewing, store chat messages in firebase, listen for new messages sent in conversation, and others.
+
+
+**_navigation_**
+
+This folder contains all the components to facilitate navigation of ‘Chat App’.
+
+| _AuthProvider.js_ - This file defines the context which tells the application if the current user is logged in or not. 
+
+| _AuthStack.js_ - This file facilitates the navigation abilities for two screens login and sign up. 
+
+| _DrawerNavigator.js_ - This file contains the drawer navigator which facilitates movement between various stacks of ‘Chat App’.
+
+| _index.js_ - This file contains the provider which holds all the routes for ‘Chat App’ navigation.
+
+| _Routes.js_ - This file contains all the stacks fro navigation of ‘Chat App’ and decides which stack the current user can access. 
+
+| _ScreenStacks.js_ - This file contains all the stacks for signed up users to access when they are logged in. 
+
+**_screens_**
+
+This folder contains of the screen components of ‘Chat App’
+
+| _AccountDetailScreen.js_ - This file contains the components and functions for interaction with for the Account Detail Screen. 
+
+| _ChatMenuScreen.js_ - This file contains the components for and functions for interaction with the Chat Menu Screen. 
+
+| _ChatRoomScreen.js_ - This file contains the components for and functions for interaction with the Chat Room Screen. 
+
+| _ContactsList.js_ - This file contains the components for and functions for interaction with  the Contacts List Screen. 
+
+| _ConversationScreen.js_ - This file contains the components for and functions for interaction with the Conversation Listing/Home Screen. 
+
+| _EditProfile.js_ - This file contains the components for and functions for interaction with the Edit Profile Screen. 
+
+| _LoginScreen.js_ - This file contains the components for and functions for interaction with the Login Screen. 
+
+| _NewChatScreen.js_ - This file contains the components for and functions for interaction with the New Chat creation Screen. 
+
+| _ProfileScreen.js_ - This file contains the components for and functions for interaction with the Profile Screen and defines which type of profile and what data is to be shown. 
+
+| _SearchScreen.js_ - This file contains the components for and functions for interaction with the Search Screen. 
+
+| _SignUpScreen.js_ - This file contains the components for and functions for interaction with the Sign Up Screen. 
 
 
 [Back to Top](#project-report-chat-app)
