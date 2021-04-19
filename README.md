@@ -10,11 +10,11 @@
     3. [System Requirements](#3-system-requirements)
     4. [Implementation Plan](#4-implementation-plan)
     5. [Application Programs]()
-        1. [Create React Native Environment]()
-        2. [Download Source Code]()
-        3. [Connect App to Firebase]()
-        4. [Install Node Modules]()
-        5. [Run App]()
+        1. [Create React Native Environment](#i-create-react-native-environment)
+        2. [Download Source Code](#ii-how-to-download-chat-app-source-code-from-github)
+        3. [Connect App to Firebase](#iii-how-to-connect-chat-app-to-google-firebase)
+        4. [Install Node Modules](#iv-how-to-install-node-modules)
+        5. [Run App](#v-how-to-run-chat-app)
     6. [Descriptiion of Programs]()
   
 
@@ -264,7 +264,7 @@ _Implementation Manual_
 ## **_5. Application programs_**
 This document lists instructions for setting up the development environment to edit and run ‘Chat App’.
 
-### **_Create React Native Environment_**
+### **_i.Create React Native Environment_**
 These are instructions on how to create an environment to run a React Native App.
 
 1. Ensure you have NodeJS installed [Installation Guide Here](https://www.tutorialspoint.com/nodejs/nodejs_environment_setup.htm)
@@ -278,7 +278,7 @@ These are instructions on how to create an environment to run a React Native App
 ```create-react-native-app MyProjectName```
 
 
-### **_How to download ‘Chat App’ source code from Github_**
+### **_ii. How to download ‘Chat App’ source code from Github_**
 Below is a link to download a zip file containing the ‘Chat App’ source code from the main branch: 
 [https://github.com/ysanche1/COSC481W-Group4/archive/refs/heads/main.zip](https://github.com/ysanche1/COSC481W-Group4/archive/refs/heads/main.zip)
 
@@ -299,14 +299,14 @@ export default function App() {
 ```
 
 
-### How connect ‘Chat App’ to Google Firebase
+### **_iii. How connect ‘Chat App’ to Google Firebase_**
 These are instructions on how to permit access of your App to Google Firebase features including, Authentication and Firestore.
  1. 
 
 
 
 
-### **_Node Modules_**
+### **_iv. How to Install Node Modules_**
 These are instructions on how to install the Node Modules required to run ‘Chat App’.
 
 **Option 1:**
@@ -331,7 +331,7 @@ This is a listing of the node modules and their source.
 
 
 
-### **_How to run ‘Chat App’_**
+### **_v. How to run ‘Chat App’_**
 These are instructions on how to run ‘Chat App’ from terminal.
 
 1. Ensure you have the node module ‘expo’ installed
