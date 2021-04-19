@@ -3,12 +3,12 @@
 # _**Project Report:** 'Chat App'_
 1. [Information]()
 2. [Introduction]()
-3. [User Manual](#user-manual)
-4. [Implementation Manual](#implementation-manual)
+3. [User Manual](#3-user-manual)
+4. [Implementation Manual](#4-implementation-manual)
     1. [Conceptual Design]()
-    2. [Functional Requirements](#functional-requirements)
-    3. [System Requirements](#system-requirements)
-    4. [Implementation Plan](#implementation-plan)
+    2. [Functional Requirements](#2-functional-requirements)
+    3. [System Requirements](#3-system-requirements)
+    4. [Implementation Plan](#4-implementation-plan)
     5. [Application Programs]()
         1. [Create React Native Environment]()
         2. [Download Source Code]()
@@ -24,7 +24,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
 [Back to Top](#project-report-chat-app)
 
 
-# **_Implementation Manual_**
+# **_4. Implementation Manual_**
 
 
 ## _2. Functional Requirements_
