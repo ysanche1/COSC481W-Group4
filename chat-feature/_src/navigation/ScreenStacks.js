@@ -1,9 +1,15 @@
+// SCREENSTACKS.JS
+// THIS FILE CONTAINS ALL THE STACKS FOR SIGNED UP USERS TO ACCESS WHEN THEY ARE LOGGED IN. 
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { createStackNavigator, HeaderBackButton } from '@react-navigation/stack';
 import { IconButton } from 'react-native-paper';
 import IOSIcon from "react-native-vector-icons/Ionicons";
 
+/************* SCREENS *************/
 import ChatRoomScreen from '../screens/ChatRoomScreen';
 import ConversationScreen from '../screens/ConversationScreen';
 import ProfileScreen from '../screens/ProfileScreen';
@@ -14,12 +20,14 @@ import AccountDetailScreen from '../screens/AccountDetailScreen';
 import EditProfileScreen from '../screens/EditProfile';
 import ChatMenuScreen from '../screens/ChatMenuScreen';
 
+/************* LOCAL  COMPONENTS *************/
 import { MenuButton, AddConversationButton } from '../components/Buttons';
 import { MINE } from '../functions/AccountProfile';
 
 
+/************* STACKS *************/
 
-//PROFILE SCREEN WITH HEADER
+//YOUR PROFILE NAVIGATION STAKC (YOUR PROFILE, EDIT PROFILE, ACCOUNT DETAILS VIEW)
 export function ProfileStack({props}) {
     console.log("Profile Stack");
 
@@ -62,6 +70,7 @@ component = {EditProfileScreen}/>
 )
 }
 
+//CONTACTS LIST STAKC (CONTACTS LIST, PROFILE)
 export function ContactStack() {
     const ContactStack = createStackNavigator();
     return ( 
@@ -92,6 +101,7 @@ export function ContactStack() {
 )
 }
 
+//CONVERSATION STACK (CONVERSATIONS LISTING, CHATROOM SCREEN, CHAT MENU, PROFILE, NEW CHAT SCREEN)
 export function ConversationStack() {
     const ConvStack = createStackNavigator();
 
@@ -130,6 +140,7 @@ options = {
 );
 }
 
+//SERACH STACK (SERACH SCREEN, PROFILE SCREEN)
 export function SearchStack() {
     const SStack = createStackNavigator();
 
@@ -166,7 +177,3 @@ export function SearchStack() {
                                         </SStack.Navigator>     
 
                                        );}
-
-
-
-//alignSelf: 'center',

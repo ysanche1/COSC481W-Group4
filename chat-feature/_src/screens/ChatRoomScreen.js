@@ -1,23 +1,28 @@
+//CHATROOMSCREEN.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE CHAT ROOM SCREEN.
+//MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useState, useEffect, useContext,  } from 'react';
 import { GiftedChat} from 'react-native-gifted-chat';
-import { AuthContext } from '../navigation/AuthProvider'; //CURRENT USER 
 import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import { List, Divider } from 'react-native-paper';
 import { useNavigation, NavigationActions } from '@react-navigation/native';
 import IOSIcon from "react-native-vector-icons/Ionicons";
 
-
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
+import { AuthContext } from '../navigation/AuthProvider'; //CURRENT USER 
 import { checkMessages, getMessages, storeMessage, readMessages } from '../functions/Communication';
 import { getCurrentUserAccount } from '../functions/AccountProfile';
 
-//ROOM SCREEN COMPONENT
-//STATES: MESSAGES
+/************* CHAT ROOM SCREEN COMPONENT *************/
 export default function ChatRoomScreen({route, navigation}) {
     const { user } = useContext(AuthContext);    
     const {roomtitle, CID} = route.params;
     const [messages, setMessages] = useState([]); //MESSAGES
     const [text, setText] = useState('');
 
+    //SET HEADER ROW 
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -78,9 +83,3 @@ user = { {_id: user.uid,
 </View>
 );   
 }
-
-//renderAvatar={null}
-
-//renderLoading
-// showUserAvatar={true}
-// showAvatarForEveryMessage={true}

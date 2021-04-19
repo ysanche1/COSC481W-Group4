@@ -1,13 +1,17 @@
+//COMMUNICATION.JS
+// THIS FILE CONTAINS FUNCTIONS FOR USER COMMUNICATION INCLUDING FUNCTIONS THAT GET ALL USER CONVERSATIONS FOR DISPLAY, LOAD MESSAGES OF EACH CONVERSATION FOR VIEWING, STORE CHAT MESSAGES IN FIREBASE, LISTEN FOR NEW MESSAGES SENT IN CONVERSATION, AND OTHERS.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useRef, useState, useContext } from 'react';
 
+/************* LOCAL  COMPONENTS *************/
 import { firebase } from '../firebase/config';
 import { Account, Profile, Message, Conversation } from './Class' 
 import { AuthContext } from '../navigation/AuthProvider';
 
 
-//CLASS OBJECTS 
-
-/********************* CHAT ******************/
+/********************* CHAT FUNCTIONS ******************/
 
 //CONVERT FB MESSAGE TO GIFTED CHAT MESSAGE
 function toReadableMessage(m, u, p) {
@@ -97,7 +101,6 @@ export async function getMessages(CID) {
         })
     })
 }
-//HIDE CURRENT USER AVATAR ON LOAD - 3/29
 
 //SEND MESSAGE TO FB COLLECTION 
 export function storeMessage(CID, GCMSG) {
@@ -178,7 +181,7 @@ export async function checkMessages(CID, CURRENTLENGTH, foo) {
     //    return M;
 }
 
-/********************* CONVERSTAION ******************/
+/********************* CONVERSTAION FUNCTIONS ******************/
 
 //GET CURRENT DATE/TIME
 function getCurrentDateTime(){
@@ -315,16 +318,7 @@ async function addConversation(USERS, CID){
     });
 }
 
-//DELET CONVERSATIONS FRO COV COLLECTION AND EACH USER CONV ARRAY
-export function deleteConversation() {
-    //DELETE CID FROM USER LISTS
-    //washingtonRef.update({
-    //    regions: firebase.firestore.FieldValue.arrayRemove("east_coast")
-
-    //DELETE CONV DOCUMENT
-    //RETURN TRUE/FALSE
-}
-
+//CONVERSATION LISTING:: RETURN OBJECT FOR FLAT LIST OF CONVERSATION 
 async function getItemListing(item, index) {
     var conversation;
     //---------- GET CONVERSATION DATA
@@ -355,7 +349,7 @@ async function getItemListing(item, index) {
     return i;
 }
 
-//GET CURRENT USER CONVERSATIONS
+//CONVERSATION LISTING:: GET CURRENT USER CONVERSATIONS
 export async function getConversations() {
 
     // ------- GET ARRAY OF CURRENT ACCOUNTS CONVERSATIONS ------
@@ -391,6 +385,7 @@ export async function getConversations() {
                  )});
 }
 
+//CONVERSATION MENU:: RETURN LISTING OF CHAT MEBERS IN CONVERSATION
 export async function getChatMembers(CID) {
     var chatMembers = await firebase.firestore().collection("CONVERSATIONS")
     .doc(CID)
@@ -435,7 +430,7 @@ export async function getChatMembers(CID) {
 
 }
 
-//CHECK IF ANOTHER MESSAGE HAS BEEN ADD TO FB DB
+//CONVERSATION LISTING/CHAT:: CHECK IF ANOTHER MESSAGE HAS BEEN ADD TO FB DB
 export function checkNewConversation(CURRENTCONVERSATIONS, foo) {
     var NEW = false;
     var C;
@@ -480,8 +475,7 @@ export function checkNewConversation(CURRENTCONVERSATIONS, foo) {
 
 }
 
-
-//USE EFFECT ON LISTING
+//GET DATA ABOUT CONVERSATION BASED ON CID
 export function getCurrentConversation(CID) {
     //NEW MESSAGES - LAST MESSAGE PROP != LAST MESSAGE IN FS
     return Promise.all([firebase.firestore()
@@ -494,7 +488,7 @@ export function getCurrentConversation(CID) {
     })
 }
 
-
+//CHECK IF THERE IS A NEW MESSAGE IN A CONVERSATION
 export function checkNewMessages(CID, lastmessage, foo) {
     var udoc = firebase.firestore()
     .collection("ACCOUNTS")
@@ -516,6 +510,7 @@ export function checkNewMessages(CID, lastmessage, foo) {
     })
 }
 
+//SET CURRENT USER UNREAD MESSAGES FOR A CONVERSATION TO 0 BASED ON CID
 export function readMessages(CID) {
     var udoc = firebase.firestore()
     .collection("ACCOUNTS")

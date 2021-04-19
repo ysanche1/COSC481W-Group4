@@ -1,7 +1,14 @@
+//AUTHENTICATION.JS
+// THIS FILE CONTAINS FUNCTIONS FOR USER AUTHENTICATION TO FACILITATE LOGIN, SIGN UP, SIGN OUT AND ACCOUNT/PROFILE CREATION.
+//BEN BRUURSEMA AND MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import { firebase } from '../firebase/config';
+
+/************* LOCAL  COMPONENTS *************/
 import { Account, Profile, Conversation, getCurrentDateTime, Message } from './Class' //CLASS OBJECTS 
 
-/**************** SIGN UP *****************/
+/**************** SIGN UP FUNCTIONS *****************/
 //CHECK FOR ERRORS, CREATE ACCOUNT AND PROFIEL OBJ ADD TO DB, LOG IN
 export function signup(first, last, email, password, confirmPassword) {
     var ERROR = false;
@@ -83,7 +90,7 @@ export function passwordRules(password, confirmPassword) {
     return {state: password == confirmPassword && password != '', message: 'Passwords do not match' };
 }
 
-/**************** LOG IN *****************/
+/**************** LOG IN FUNCTIONS  *****************/
 //CHECK FOR ERRORS, LOG IN USER 
 export function login(email, password) {
     var ERROR = false;
@@ -109,7 +116,7 @@ export function login(email, password) {
     });
 }
 
-/**************** SIGN OUT *****************/
+/**************** SIGN OUT FUNCTIONS *****************/
 export function signOut() {
     console.log("Signing out...");
     return (firebase.auth().signOut());

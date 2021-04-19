@@ -1,17 +1,24 @@
+// BUTTONS.JS
+// THIS FILE HOLDS ALL THE BUTTON COMPONENTS (PROFILEBUTTON, ADDCONVERSATIONBUTTON, FORMBUTTON/FORMBUTTONTEXT)
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useContext } from 'react';
 import { TouchableOpacity, Dimensions, StyleSheet, View, Text } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
-
-import { AuthContext } from '../navigation/AuthProvider'; 
-
-import { createConversation } from '../functions/Communication';
-
 import IOSIcon from "react-native-vector-icons/Ionicons";
 import MaterialIcon from "react-native-vector-icons/MaterialIcons";
 import { useNavigation } from '@react-navigation/native';
 
+/************* LOCAL  COMPONENTS *************/
+import { createConversation } from '../functions/Communication';
+import { AuthContext } from '../navigation/AuthProvider'; 
+
+
+/************* CONSTANTS *************/
 const { width, height } = Dimensions.get('screen');
 
+/************* BUTTONS *************/
 export function MenuButton() {
     const navigation = useNavigation();
     return (<TouchableOpacity 
@@ -74,7 +81,7 @@ export function FormButtonText({ title, onPress,  ...rest }) {
     );
 }
 
-
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         width: width,

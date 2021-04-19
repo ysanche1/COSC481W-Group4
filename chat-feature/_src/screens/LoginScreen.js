@@ -1,29 +1,33 @@
+// LOGINSCREEEN.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE LOG IN SCREEN.
+// MORAGN IVERSON 
+
+/************* NODE MODULES *************/
 import React, { useState, useContext } from 'react';
 import { View, StyleSheet, Dimensions, Text } from 'react-native';
 import { Title, TextInput } from 'react-native-paper';
-const { width, height } = Dimensions.get('screen');
 
-import { FormButton, FormButtonText } from '../components/BUttons';
-
+/************* LOACL COMPONENTS/FUNCTIONS *************/
+import { FormButton, FormButtonText } from '../components/Buttons';
 import { login } from '../functions/Authentication';
 import { AuthContext } from '../navigation/AuthProvider'
 
+/************* CONSTANTS *************/
+const { width, height } = Dimensions.get('screen');
 
+/************* LOGIN SCREEN COMPONENT *************/
 export default function LoginScreen({ navigation }) {
     const { user } = useContext(AuthContext); //GET CURRENT USER AND ALL DATA
     const [error, setError] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    
+    //WHAT TO DO WHEN LOGIN BUTTON PRESSED
     const handleLogin = async() => {
         const RES = await login(email, password);
         if(RES != null) setError(RES);
-//        if(RES == null) //navigation.navigate('Conversations', { user });
-//        else setError(RES);
     }
     
-//    console.log(error)
     return (
         <View style = {styles.container}>
         <Title style={styles.titleText}>Welcome to Chat app</Title>
@@ -63,7 +67,7 @@ export default function LoginScreen({ navigation }) {
         );
     }
 
-
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',

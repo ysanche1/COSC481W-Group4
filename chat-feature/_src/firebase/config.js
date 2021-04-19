@@ -1,7 +1,14 @@
+// config.js 
+// This file contains the object containing keys for firebase connection.
+// Ben Bruursema
+
+
+/************* NODE MODULES *************/
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
+/************* CONSTANTS *************/
 const firebaseConfig = {
     apiKey: "AIzaSyB2IjXCJwgL37jS02VvKCfgaTKzzg91gLc",
     authDomain: "chatroom-b59c8.firebaseapp.com",
@@ -18,4 +25,5 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 
+/************* EXPORTS *************/
 export { firebase };
