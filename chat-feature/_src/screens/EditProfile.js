@@ -1,24 +1,29 @@
-import { firebase } from '../firebase/config';
+//EDITPROFILE.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE EDIT PROFILE SCREEN.
+//MORGAN IVERSON 
+
+/************* NODE MODULES *************/
 import React, { useContext, useState, useEffect } from 'react';
 import { View, StyleSheet, Dimensions, Text, Image, TouchableOpacity } from 'react-native';
-import { AuthContext } from '../navigation/AuthProvider';
+import { useNavigation } from '@react-navigation/native';
+import { Input } from 'react-native-elements';
 import { Title, IconButton, Button, TextInput } from 'react-native-paper';
 //import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import * as ImagePicker from 'react-native-image-picker';
 // import PhotoUpload from 'react-native-photo-upload'
 
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
+import { firebase } from '../firebase/config';
 import { ProfileButton } from '../components/Buttons';
-import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../navigation/AuthProvider';
 import { getCurrentUserAccount, getContacts, getDateCreated, editProfile } from '../functions/AccountProfile';
-import { Input } from 'react-native-elements';
 
 
-//import { checkPassword, updateProfile } from '../functions/AccountProfile';
-
+/************* CONSTNATS *************/
 const { width, height } = Dimensions.get('screen');
 const bar_width = .8 * width;
 
-
+/************* EDIT SCREEN CCOMPONENT *************/
 export default function EditProfileScreen() {
     //    const user = useContext(AuthContext);
     const [error, setError] = useState('');
@@ -150,6 +155,7 @@ export default function EditProfileScreen() {
 
 )}
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     IMG: {
         width: 200, 

@@ -1,17 +1,24 @@
-import React, { useContext, useState, useEffect, useLayoutEffect } from 'react'; //CURRENT USER USECONTEXT
+// PROFILE.JS
+// THIS FILE CONTAINS THE COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE PROFILE SCREEN AND DEFINES WHICH TYPE OF PROFILE AND WHAT DATA IS TO BE SHOWN. 
+// MORGAN IVERSON
+/************* NODE MODULES *************/
+
+import React, { useContext, useState, useEffect, useLayoutEffect } from 'react'; 
 import { Title } from 'react-native-paper';
 import { TouchableOpacity, StyleSheet, View, Text, ScrollView, Image } from 'react-native';
+import { useNavigation, NavigationActions } from '@react-navigation/native';
 
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
 import { ProfileButton, MenuButton } from '../components/Buttons';
 import { AuthContext } from '../navigation/AuthProvider'; //CURRENT USER 
 import { getUserProfile, addNewContact } from '../functions/AccountProfile';
 import { signOut } from '../functions/Authentication';
-import { useNavigation, NavigationActions } from '@react-navigation/native';
 
+/************* CONSTANTS *************/
 import {VIEW, SEARCH, MINE } from '../functions/AccountProfile'
 
 
-//export default function ProfileScreen({route}) {
+/************* PROFILE SCREEN COMPOPNENT *************/
 export default function ProfileScreen({ route }) {
     const { user } = useContext(AuthContext);
     const navigation = useNavigation();
@@ -130,6 +137,7 @@ switch(WHICH) {
 }
 }
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     IMG: {
         width: 150, 

@@ -1,36 +1,25 @@
+// SEARCHSCREEN.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE SERACH SCREEN.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useContext, useState, useEffect }  from 'react';
 import { Dimensions, FlatList, View, StyleSheet, Text, Image } from 'react-native';
 import { List, Title } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-
-
 import { SearchBar } from 'react-native-elements';
 import { AlphabetList } from 'react-native-section-alphabet-list';
 
-const { width, height } = Dimensions.get('screen');
-import { SEARCH } from '../functions/AccountProfile';
+/************* LOCAL  COMPONENTS/FUNCTIONS *************/
 import { getUsers } from '../functions/AccountProfile';
 
+/************* CONSTANTS *************/
+const { width, height } = Dimensions.get('screen');
+import { SEARCH } from '../functions/AccountProfile';
 
-//export default function ContactList({route}) {
-//    const {fillconv} = (route.params == null) ? false : route.params;
+/************* SERACH SCREEN COMPONENT *************/
 export default function SearchScreen() {
-    const [USERS, SETUSERS] = useState([]);
-    /**  [
-        {
-            value: 'John Doe', 
-            email: 'jdoe@gmail.com',
-            key: '00001', 
-            img:''
-        }, 
-        {
-            value: 'Alex James', 
-            email: 'alexj12@hotmail.com', 
-            key: '00002', 
-            img: ''
-        }, 
-    ];
-    **/
+    const [USERS, SETUSERS] = useState([]);1
     const [users, setUsers] = useState([]);
     const [search, setSearch] = useState('');
     const navigation = useNavigation();
@@ -114,7 +103,7 @@ renderItem = { RenderItem }
 );
 }
 
-
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         width: {width},  

@@ -1,18 +1,24 @@
+// CONVERSATION SCREEN
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE CONVERSATION LISTING SCREEN.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useContext, useState, useEffect } from 'react';
-//import EStyleSheet from 'react-native-extended-stylesheet';
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../navigation/AuthProvider';
 
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
 import { firebase } from '../firebase/config';
 import { addConversation } from '../functions/AccountProfile';
 import { getConversations, getCurrentConversation, checkNewConversation, checkNewMessages, readMessages } from '../functions/Communication';
 import { AddConversationButton } from '../components/Buttons';
-//import Modal from 'react-native-modal'; https://github.com/react-native-modal/react-native-modal
 
+/************* CONSTANTS *************/
 const { width, height } = Dimensions.get('screen');
 
+/************* CONVERSATION SCREEN COMPONENT *************/
 export default function ConversationScreen({ navigation }) {
     const { user } = useContext( AuthContext );
     const [listings, setListings] = useState([]);
@@ -46,8 +52,7 @@ export default function ConversationScreen({ navigation }) {
 );
 }
 
-//LINE OF CONVERSATION TO BE LISTED IN SCREEN
-//CONSIDER ADDING UNREADE MESSAGE PROP - BOLD ROOM TITLE IF UNREAD
+/************* COMPONENT: CONVERSATION LISTINBG ROW *************/
 function ConversationListing({roomtitle, lastmessage, time, CID}){
     const navigation = useNavigation();
     const [newMSG, setNewMSG] = useState(false);
@@ -98,6 +103,7 @@ function ConversationListing({roomtitle, lastmessage, time, CID}){
 );
 }
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         width: {width},        

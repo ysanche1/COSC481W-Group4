@@ -1,19 +1,22 @@
+//CONTACTSLIST.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE CONTACTS LIST SCREEN.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useContext, useState, useEffect }  from 'react';
 import { Dimensions, FlatList, View, StyleSheet, Text, Image } from 'react-native';
 import { List, Title } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-
-
 import { SearchBar } from 'react-native-elements';
 import { AlphabetList } from 'react-native-section-alphabet-list';
 
-const { width, height } = Dimensions.get('screen');
-
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
 import { getContacts, VIEW } from '../functions/AccountProfile';
 
+/************* CONSTANTS *************/
+const { width, height } = Dimensions.get('screen');
 
-//export default function ContactList({route}) {
-//    const {fillconv} = (route.params == null) ? false : route.params;
+/************* CONTACTS LIST COMPONENT *************/
 export default function ContactList() {
     const CONTACTS = [
         {
@@ -100,8 +103,7 @@ renderCustomSectionHeader = { section => RenderHeader(section) }
 );
 }
 
-//PROFILE -> OTHER USER PROFILE
-//ROW HOLDING CONTACT DATA
+/************* COMPONENT FOR DISPLAYING INDIVIDUAL CONTACT DATA *************/
 function ContactListing({name, uid, img, bio }){
     const navigation = useNavigation();
     //        console.log(navigation); //CURRENT ROUTE: CONTACTS
@@ -136,6 +138,7 @@ function ContactListing({name, uid, img, bio }){
         );
 }
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         width: {width},        

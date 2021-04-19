@@ -1,11 +1,18 @@
+// ACCOUNTPROFILE.JS
+// THIS FILE CONTAINS FUNCTIONS FOR USER ACCOUNT AND PROFILE MANAGEMENT INCLUDING, GETTING/EDITING PROFILE DATA AND GETTING ACCOUNT DATA SUCH AS CONTACTS AND CONVERSATIONS.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import { firebase } from '../firebase/config';
+
+/************* LOCAL  COMPONENTS *************/
 import { Account, Profile, Message, Conversation } from './Class' //CLASS OBJECTS 
 
+/************* CONSTANTS *************/
 export const VIEW = 0, SEARCH = 1, MINE = 2;
 
-//FUNCTIONS FOR ACCOUNT AND PROFILE MANAGEMENT
 
-/****************** PROFILE *********************/
+/****************** PROFILE MANAGEMENT FUNCTIONS *********************/
 //GET CURRENT USER PROFILE DATA 
 export function getUserProfile(){
     const p = [];
@@ -43,7 +50,8 @@ export async function editProfile(img, bio) {
         
 }
 
-/****************** CONTACTS *********************/
+
+/****************** CONTACTS MANAGEMENT FIUNCTIONS *********************/
 
 //RETURNS CONTACT LISTING DATA OBJECT 
 function getContactDetails(UID, index) {
@@ -156,16 +164,18 @@ export async function getUsers() {
 
     return users.sort((a, b) => { return a.value - b.value;});
 }
-
+//ADDS UID TO CURRENT USERS CONTACTS ARRY IN FIRESTORE
 export async function addNewContact(UID) {
     await firebase.firestore().collection("ACCOUNTS").doc(firebase.auth().currentUser.uid)
         .update({
         CONTACTS: firebase.firestore.FieldValue.arrayUnion(UID),
     });
 }
+
+
 /****************** ACCOUNT *********************/
 
-//RETURN CURRENT USER ACCOUNT DOC DATA
+//RETURN CURRENT USER ACCOUNT OBJECT/DOCUMENT DATA
 export async function getCurrentUserAccount() {
     const p = [];
     var a = {};
@@ -190,8 +200,7 @@ export async function getCurrentUserAccount() {
     });
 }
 
-
-//GET USER METADATA
+//GET CURRENT USER FIREBASE AUTHENTICATIONS METADATA
 export async function getDateCreated() {
     return await firebase.auth().currentUser.metadata.creationTime;
 }

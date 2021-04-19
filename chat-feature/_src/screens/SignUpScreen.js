@@ -1,10 +1,17 @@
+// SIGNUPSCREEN.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE SIGN UP SCREEN.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useState } from 'react';
 import { View, StyleSheet, Dimensions, Text } from 'react-native';
 import { Title, IconButton, Button, TextInput } from 'react-native-paper';
 
+/************* LOCAL  COMPONENTS *************/
 import { FormButton } from '../components/Buttons';
 import { signup } from '../functions/Authentication';
 
+/************* CONSTANTS *************/
 const { width, height } = Dimensions.get('screen');
 
 
@@ -91,8 +98,7 @@ export default function SignUpScreen({ navigation }) {
         );
 }
 
-//        SUIG UP BUTTON: disabled = {formComplete ? true : false}
-
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         backgroundColor: 'white',

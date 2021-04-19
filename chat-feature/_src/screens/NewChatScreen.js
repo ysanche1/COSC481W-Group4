@@ -1,29 +1,26 @@
+// NEWCHATSCREEN.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE NEW CHAT SCREEN.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useState, useEffect, useContext } from 'react';
 import { Dimensions, View, Text, FlatList, TextInput, ListItem, Keyboard, ScrollView, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import { AuthContext } from '../navigation/AuthProvider';
 import { useNavigation } from '@react-navigation/native';
-
 import { shouldUseActivityState } from 'react-native-screens';
 import { List, Divider, Title } from 'react-native-paper';
 import OcticonsIcon from 'react-native-vector-icons/Octicons';
 import { SearchBar } from 'react-native-elements';
 import { AlphabetList } from 'react-native-section-alphabet-list';
 
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
 import { createConversation } from '../functions/Communication';
 import { getContacts } from '../functions/AccountProfile';
+import { AuthContext } from '../navigation/AuthProvider';
 
+/************* CONSTANTS *************/
 const { width, height } = Dimensions.get('screen');
 
-
-/** TO DO:
--> CHECK ADD/REMOVE (ADD ALL/REMOVE ALL MEMEBRS LIST CORRECT)
-    -> SEND LIST OF UID (members.map)
- -> PULL USER CONTACTS
- -> DISPLAY ON TOP OF CONVERSATION LIST (BLACK OPAQUE BACKGROUND)
- https://stackoverflow.com/questions/31101445/in-react-native-how-do-i-put-a-view-on-top-of-another-view-with-part-of-it-lyi 
- **/
-
-
+/************* NEW CHAT SCREEN COMPONENT *************/
 export default function NewChatScreen(){
     const { user } = useContext( AuthContext );
     const navigation = useNavigation();
@@ -171,7 +168,7 @@ renderCustomSectionHeader = { section => RenderHeader(section) }/>
 );
 }
 
-//BLOCK CONTAINING MEMEBER NAME
+/************* COMPONENT: BLOCK CONTAINNG MEMBER NAME *************/
 function MemberComponent({ onPress, name, UID }) {
     return <View style = {styles.memberBlock}> 
         <TouchableOpacity onPress =  {() => { onPress( UID )}} >
@@ -181,7 +178,7 @@ function MemberComponent({ onPress, name, UID }) {
 
 }
 
-// LISTING OF CHAT MEMBER BLOCKS
+/************* COMPONENT: LISTONG OF MEMBER BLOCKS *************/
 function MemberList({ data, onPress }){
     return <View
     style = {styles.memberContainer}> 
@@ -197,6 +194,7 @@ function MemberList({ data, onPress }){
 }</View>
 }
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         flex: 1,

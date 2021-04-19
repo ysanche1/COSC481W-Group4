@@ -1,13 +1,16 @@
+/************* NODE MODULES *************/
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
+
+/************* LOCAL  COMPONENTS (STACKS) *************/
 import { ProfileStack, ContactStack, ConversationStack, SearchStack } from './ScreenStacks';
 
+/************* CONSTANTS *************/
 const Drawer = createDrawerNavigator();
 
-//PROFILE -> USER PROFILE
-//TYPE; FRONT/SLIDE
+/************* DRAWER NAVIGATOR *************/
 export default function DrawerNavigator() {
     return (
         <Drawer.Navigator 
@@ -26,7 +29,7 @@ export default function DrawerNavigator() {
         
         <Drawer.Screen name="Conversations" component={ConversationStack} options = {{title: 'Home'}}/>
                 
-        <Drawer.Screen name= "ProfileStack" component = {ProfileStack} options = {{title: 'Your profile'}}/>
+        <Drawer.Screen name= "ProfileStack" component = {ProfileStack} options = {{title: 'Your Profile'}}/>
         
         <Drawer.Screen name = 'Contacts' component= {ContactStack}/>
         
@@ -36,6 +39,7 @@ export default function DrawerNavigator() {
     );
 }
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     drawer: {
         backgroundColor: 'white', 

@@ -1,11 +1,18 @@
+// ACCOUNTDETAILSCREEN.JS
+// THIS FILE CONTAINS COMPONENTS FOR AND FUNCTIONS FOR INTERACTION WITH THE SERACH SCREEN.
+// MORGAN IVERSON
+
+/************* NODE MODULES *************/
 import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
 import { List } from 'react-native-paper';
 
+/************* LOCAL COMPONENTS/FUNCTIONS*************/
 import { AuthContext } from '../navigation/AuthProvider'; 
 import {getCurrentUserAccount, getContacts, getDateCreated } from '../functions/AccountProfile';
 import { getConversations } from '../functions/Communication';
 
+/************* ACCOUNT DETAIL SCREEN COMPONENT *************/
 export default function AccountDetailScreen() {
     const user = useContext(AuthContext);
     const [account, setAccount] = useState({});
@@ -152,6 +159,7 @@ return (
 )
 }
 
+/************* STYLES *************/
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
