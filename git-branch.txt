@@ -1,7 +1,0 @@
-Update remote branch with main branch
-
-$git checkout <branch>
-$git merge main
-$git push
-_________________________________________
-
