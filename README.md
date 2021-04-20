@@ -236,10 +236,86 @@ export default function App() {
 
 
 ### **_iii. How connect ‘Chat App’ to Google Firebase_**
-These are instructions on how to permit access of your App to Google Firebase features including, Authentication and Firestore.
- 1. 
 
+_These are instructions on how to permit access of your App to Google Firebase and how to set up features including, Authentication and Firestore._
 
+**Connecting to Firebase**
+
+1. Create a project on [Google Firebase](https://console.firebase.google.com/) 
+2. Go to Project Overview and Go to Project Settings
+3. Under the general section find the section titled, “Your apps”
+4. Select ‘&lt; / >’
+5. Enter an app nickname
+6. Press Register App
+7. Copy the information between the &lt;script> tags  in the code listed under ‘Add Firebase SDK’ 
+8. Create a file called config.js in your project folder (where App.js is located) 
+9. Ensure you have ‘firebase’ node module installed
+10. Add the following code to beginning of config.js
+```
+import firebase from 'firebase/app';
+```
+11. Paste the contents of the <script> tags here
+12. Add the following line of code to the bottom of config.js
+```
+    if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+export { firebase };
+```
+13. Whenever you want to access Google Firebase functions in a document add the following line of code to the beginning of the document
+```
+    import { firebase } from '<PATHNAME>/config';
+```
+
+**Authentication**
+
+1. Navigate to Authentication from your Google Firebase Project console
+2. Press ‘Get Started’
+3. Enable Email/Password Sign-In Method
+4. Press ‘Save’
+
+_Access Google Firebase Authentication Documentation [Here]( https://firebase.google.com/docs/auth )_
+
+**Storage/Database**
+
+_Now that you have the authorization completed, you need to set up the database to store the messaging content._
+
+1. Navigate to Firestore from your Google Firebase Project console
+2. Press ‘Create Project’
+3. Create new collections titled "ACCOUNTS" and "CONVERSATIONS"
+4. Select the Auto-ID option 
+5. Select Rules across the top of the Firestore page.
+6. Replace the contents of the Rules document with the following which will restrict read/write access to signed in users
+
+```
+rules_version = '1';
+service cloud.firestore {
+    match / databases / { database } / documents {
+        // Allow public read access, but only content owners can write
+        function signedInOrPublic() {
+            return request.auth.uid != null || resource.data.visibility == 'public';
+        }
+        match / ACCOUNTS / { account } {
+            allow read, write; //if signedInOrPublic();
+        }
+        match / CONVERSATIONS / { conversations } {
+            allow read, write;// if signedInOrPublic();
+        }
+        match / PROFILES / { profiles } {
+            allow read, write;//: if signedInOrPublic();
+        }
+        match / SESSIONS / { sessions } {
+            allow read, write;//: if signedInOrPublic();
+        }
+        match / messages / { messages } {
+            allow read, write;//: if signedInOrPublic();
+        }
+        match / users / { users } {
+            allow read, write;//: if signedInOrPublic();
+        }
+    }}
+```
+_Access Google Firebase Firestore Documentation [Here](https://firebase.google.com/docs/firestore )_
 
 
 ### **_iv. How to Install Node Modules_**
@@ -263,7 +339,29 @@ These are instructions on how to install the Node Modules required to run ‘Cha
 npm install <package-name> <package-name> <package-name>
 ```
 
-This is a listing of the node modules and their source. 
+Below is a listing of the node modules and their source. 
+
+_[@react-navigation/drawer](https://reactnavigation.org/docs/drawer-based-navigation/)_
+
+_[@react-navigation/native](https://reactnavigation.org/docs/getting-started)_
+
+_[@react-navigation/stack](https://reactnavigation.org/docs/stack-navigator/)_
+
+_[expo](https://docs.expo.io/)_
+
+_[firebase](https://firebase.google.com/)_
+
+_[nodemon](https://nodemon.io/)_
+
+_[react-native-elements](https://reactnativeelements.com/)_
+
+_[react-native-gifted-chat](https://github.com/FaridSafi/react-native-gifted-chat)_
+
+_[react-native-paper](https://callstack.github.io/react-native-paper/)_
+
+_[react-native-section-alphabet-list](https://github.com/Kieran-McIntyre/react-native-section-alphabet-list)_
+
+_[react-native-vector-icons](https://github.com/oblador/react-native-vector-icons)_
 
 
 
