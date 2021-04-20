@@ -48,86 +48,97 @@ export default function ProfileScreen({ route }) {
     //ADD MENU BUTTON WHENON YOUR PROFILE
     //    console.log("WHICH: ", WHICH);
 
+
+
     if(WHICH == MINE)
     {
         //        console.log("MENU");
         React.useLayoutEffect(() => {
             navigation.setOptions({
-                
+                title: 'Your Profile',
                 headerLeft: () => (<MenuButton/>)
                                    });
-            }, [navigation]);}
-
-                              //FUNCTION TO ADD CONTACT UID TO CONTACT LIST IN FB
-        const addContact = () => {
-            addNewContact(uid)
-                .then(() => {
-                navigation.goBack();
-            })
+            }, [navigation]);
         }
+    else {
+                              React.useLayoutEffect(() => {
+            navigation.setOptions({
+                title: ''
 
-        //VIEW ONLY
-        const ViewProfile = () => {
-            return (
-                <ScrollView contentContainerStyle = {{flex:1}}> 
-                <View style = {styles.container}>
+            }, [navigation]);
+        })
+    }
 
-                <Image src = {img} style = {styles.IMG}/>
-                <Text style = {styles.name}>{name}</Text>
-                <View style = {styles.bio}><Text style = {styles.biotxt}>"{bio}"</Text></View>
+    //FUNCTION TO ADD CONTACT UID TO CONTACT LIST IN FB
+    const addContact = () => {
+        addNewContact(uid)
+            .then(() => {
+            navigation.goBack();
+        })
+    }
 
-                <View style = {styles.buttonCont}>
+    //VIEW ONLY
+    const ViewProfile = () => {
+        return (
+            <ScrollView contentContainerStyle = {{flex:1}}> 
+            <View style = {styles.container}>
 
-                </View>
+            <Image src = {img} style = {styles.IMG}/>
+            <Text style = {styles.name}>{name}</Text>
+            <View style = {styles.bio}><Text style = {styles.biotxt}>"{bio}"</Text></View>
 
-                </View>
+            <View style = {styles.buttonCont}>
 
-                </ScrollView>
-            );
-        }
-        //ADD CONTACT BUTTON
-        const SearchProfile = () => {
-            return (
-                <ScrollView contentContainerStyle = {{flex:1}}> 
-                <View style = {styles.container}>
+            </View>
 
-                <Image src = {img} style = {styles.IMG}/>
-                <Text style = {styles.name}>{name}</Text>
-                <View style = {styles.bio}><Text style = {styles.biotxt}>"{bio}"</Text></View>
+            </View>
+
+            </ScrollView>
+        );
+    }
+    //ADD CONTACT BUTTON
+    const SearchProfile = () => {
+        return (
+            <ScrollView contentContainerStyle = {{flex:1}}> 
+            <View style = {styles.container}>
+
+            <Image src = {img} style = {styles.IMG}/>
+            <Text style = {styles.name}>{name}</Text>
+            <View style = {styles.bio}><Text style = {styles.biotxt}>"{bio}"</Text></View>
 
 
-                <View style = {styles.buttonCont}>
-                <ProfileButton title = 'Add Contact' onPress = {addContact} /> 
+            <View style = {styles.buttonCont}>
+            <ProfileButton title = 'Add Contact' onPress = {addContact} /> 
 
-                </View>
+            </View>
 
-                </View>
+            </View>
 
-                </ScrollView>
-            );
-        }
-        //MY PROFILE - EDIT VIEW DETAILS
-        const UserProfile = () => {
-            return (
-                <ScrollView contentContainerStyle = {{flex:1}}> 
-                <View style = {styles.container}>
+            </ScrollView>
+        );
+    }
+    //MY PROFILE - EDIT VIEW DETAILS
+    const UserProfile = () => {
+        return (
+            <ScrollView contentContainerStyle = {{flex:1}}> 
+            <View style = {styles.container}>
 
-                <TouchableOpacity>
-                <Image src = { img } style = {styles.IMG} />
-                </TouchableOpacity>
+            <TouchableOpacity>
+            <Image src = { img } style = {styles.IMG} />
+            </TouchableOpacity>
 
-                <Text style = {styles.name}>{ name }</Text>
-                <View style = {styles.bio}><Text style = {styles.biotxt}>{ bio }</Text></View>
+            <Text style = {styles.name}>{ name }</Text>
+            <View style = {styles.bio}><Text style = {styles.biotxt}>{ bio }</Text></View>
 
-                <View style = {styles.buttonCont}>
-                <ProfileButton  title = 'Edit Profile' onPress = { () => {navigation.navigate('Edit')}}/>  
-        <ProfileButton title = 'View Account Details' onPress = { () => {navigation.navigate('Details')}} /> 
+            <View style = {styles.buttonCont}>
+            <ProfileButton  title = 'Edit Profile' onPress = { () => {navigation.navigate('Edit')}}/>  
+    <ProfileButton title = 'View Account Details' onPress = { () => {navigation.navigate('Details')}} /> 
     <ProfileButton title = 'Sign Out' onPress = {() => signOut()}/> 
 
         </View>
-    </View>
-    </ScrollView>
-    );
+</View>
+</ScrollView>
+);
 }
 
 switch(WHICH) {

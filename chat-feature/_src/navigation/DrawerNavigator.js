@@ -14,7 +14,7 @@ const Drawer = createDrawerNavigator();
 export default function DrawerNavigator() {
     return (
         <Drawer.Navigator 
-        initialRouteName="ProfileStack"
+        initialRouteName="Conversations"
         title = 'Drawer Title'
         drawerPosition = 'left'
         drawerType = 'slide'

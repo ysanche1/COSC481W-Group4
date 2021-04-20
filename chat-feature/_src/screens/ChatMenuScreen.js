@@ -4,14 +4,14 @@
 /************* NODE MODULES *************/
 import React, { useContext, useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, FlatList } from 'react-native';
-import { AuthContext } from '../navigation/AuthProvider'; 
 import { List } from 'react-native-paper';
 
-/************* NODE MODULES *************/
+/************* LOCAL COMPONENTS/FUNCTIONS *************/
 import { getChatMembers } from '../functions/Communication';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../navigation/AuthProvider'; 
 
-/************* NODE MODULES *************/
+/************* CONSTANTS *************/
 import { VIEW, SEARCH} from '../functions/AccountProfile';
 
 /************* CHAT MENU SCREEN COMPONENT *************/
@@ -31,7 +31,7 @@ export default function ChatMenuScreen({route}) {
 
     //SET NAVIGATION HEADER
     React.useLayoutEffect(() => {
-        navigation.setOptions({title: route.params.roomtitle + " Details"})}, [navigation]);   
+        navigation.setOptions({title: route.params.roomtitle + " Chat"})}, [navigation]);   
 
     //WHAT DO DO WHEN USER PRESSE SON MEMBER
     const memberPress = ({ item }) => {

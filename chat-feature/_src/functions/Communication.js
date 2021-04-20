@@ -184,12 +184,18 @@ export async function checkMessages(CID, CURRENTLENGTH, foo) {
 /********************* CONVERSTAION FUNCTIONS ******************/
 
 //GET CURRENT DATE/TIME
-function getCurrentDateTime(){
+export function getCurrentDateTime(){
     const d = new Date();
-    console.log(d.get)
+    console.log(d);
+    const hour = (d.getHours() == 0) ? 12 : (d.getHours() % 13);
+    const minute = ((d.getMinutes()<10 ? '0' : '' ) + d.getMinutes() );
+    const tod = (d.getHours() > 11 ? "pm" : "am");
+    
+//    console.log("Time: ", hour, minute, tod);
+    
     return {
         date: (d.getMonth() + 1) + "/" + d.getDate() + "/" +  d.getFullYear(), 
-        time: (d.getHours() == 0) ? 12 : (d.getHours() % 13) + ":" + ((d.getMinutes()<10?'0':'') + d.getMinutes() ) + (d.getHours() > 11 ? "pm" : "am")
+        time:  hour + ":" + minute + tod
     };
 }
 

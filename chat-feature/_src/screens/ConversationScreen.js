@@ -7,14 +7,13 @@ import React, { useContext, useState, useEffect } from 'react';
 import { Dimensions, FlatList, View, StyleSheet, Text } from 'react-native';
 import { List, Divider, Title } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../navigation/AuthProvider';
 
 /************* LOCAL COMPONENTS/FUNCTIONS *************/
 import { firebase } from '../firebase/config';
+import { AuthContext } from '../navigation/AuthProvider';
 import { addConversation } from '../functions/AccountProfile';
 import { getConversations, getCurrentConversation, checkNewConversation, checkNewMessages, readMessages } from '../functions/Communication';
 import { AddConversationButton } from '../components/Buttons';
-
 /************* CONSTANTS *************/
 const { width, height } = Dimensions.get('screen');
 
@@ -26,7 +25,6 @@ export default function ConversationScreen({ navigation }) {
     /** SHOUDL FILL CONVERSATIONS REPLACE NEED FOR GET COnv **/
     useEffect(() => {
         checkNewConversation(listings, setListings);
-        //        console.log(listings);
     }, []);
 
 

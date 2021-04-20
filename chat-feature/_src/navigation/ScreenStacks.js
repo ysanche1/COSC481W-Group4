@@ -35,7 +35,7 @@ export function ProfileStack({props}) {
 
     return ( 
         <ProfStack.Navigator
-        initialRouteName = 'Edit'
+        initialRouteName = 'ProfileScreen'
         screenOptions={{
         headerStyle: {
         backgroundColor: 'black', 

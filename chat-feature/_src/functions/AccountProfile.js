@@ -205,6 +205,3 @@ export async function getDateCreated() {
     return await firebase.auth().currentUser.metadata.creationTime;
 }
 
-
-}
-
