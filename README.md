@@ -28,7 +28,7 @@ The instructions of how to use ‘Chat App’ are listed below according to acti
 
 ## _1. Conceptual Design_
 
-[Back to Top](#1-conceptual-design)
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 ## _2. Functional Requirements_
 
