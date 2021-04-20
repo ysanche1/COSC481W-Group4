@@ -1,11 +1,9 @@
-# COSC481W-Group4
-
-# _**Project Report:** 'Chat App'_
-1. [Information]()
-2. [Introduction]()
+# _**COSC481W Group 4 Project Report:** 'Chat App'_
+1. [Group Information](#1-group-information)
+2. [Introduction](#2-introduction)
 3. [User Manual](#3-user-manual)
 4. [Implementation Manual](#4-implementation-manual)
-    1. [Conceptual Design]()
+    1. [Conceptual Design](#1-conceptual-design)
     2. [Functional Requirements](#2-functional-requirements)
     3. [System Requirements](#3-system-requirements)
     4. [Implementation Plan](#4-implementation-plan)
@@ -16,16 +14,21 @@
         4. [Install Node Modules](#iv-how-to-install-node-modules)
         5. [Run App](#v-how-to-run-chat-app)
     6. [Descriptiion of Programs]()
-  
+## **_1. Group Information_**
+
+## **_2. Introduction_**
 
 ## **_3. User Manual_**
 The instructions of how to use ‘Chat App’ are listed below according to action. 
-<table> <tr> <td colspan="2" ><strong><em>Authentication</em></strong><p><em>How to create an account and log into and sign out of your account on ’Chat App’.</em> </td> </tr> <tr> <td><em>Sign Up</em><ol><li><em>Select ‘New user? Join here’</em><li><em>Enter your first name, last name, email and a six character password </em><li><em>Press ‘Sign Up’</em></li></ol> </td> <td>(3) </td> </tr> <tr> <td><em>Log In</em><ol><li><em>Enter the email and six character password you created at sign up</em><li><em>Press ‘Login’</em></li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Sign Out </em><ol><li>Go to ‘Your Profile’ from Navigation Drawer<li>Press ‘Sign Out’</li></ol> </td> <td>(2) </td> </tr> <tr> <td colspan="2" ><strong><em>Navigation</em></strong><p><em>How to navigate between screens on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Navigation</em><ol><li>Press the hamburger button <strong>&lt;Icon here></strong> on the upper left corner</li></ol> </td> <td>(1) </td> </tr> <tr> <td colspan="2" ><strong><em>Account</em></strong><p><em>How to view and edit profile and view account details on ‘Chat App’.</em> </td> </tr> <tr> <td><em>View Profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ </li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Edit profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Select ‘Edit Profile’ <li>Enter changes to bio<li>Press ‘Submit Changes’<p>*Image upload not functional</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Account Details</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Press ‘View Account Details’</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Contacts</em></strong><p><em>How to add contacts and view your contact list on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Add Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Search’ <li>Search by name (Accounts not already in contacts)<li>View Profile on click<li>Add contact from profile ro go back to search (reset)</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Contacts List’ <li>(Optional) Use the search bar to search contacts</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Chat</em></strong><p><em>How to start a new conversation, enter an existing conversation and view the menu of a conversation on ‘Chat App’.</em> </td> </tr> <tr> <td><em>New Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Chat Bubble Icon <strong>&lt;Icon here></strong> in upper right corner<li>Use the search bar to enter the name of the user you are looking for<li>Select a name to add them to the conversation<li>Select ‘Chat Now!’</li></ol> </td> <td>(6) </td> </tr> <tr> <td><em>Existing Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select the Conversation you'd like to enter<li>Start typing and press send</li></ol> </td> <td>(4) </td> </tr> <tr> <td><em>Conversation Menu</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Conversation you'd like to enter<li>Select the hamburger icon <strong>&lt;Icon here></strong> in the upper right corner<li>(Optional) View chat member profile by pressing their name<li>(Optional) Add members who are not already contacts</li></ol> </td> <td>(6) </td> </tr></table>
-[Back to Top](#project-report-chat-app)
+<table> <tr> <td colspan="2" ><strong><em>Authentication</em></strong><p><em>How to create an account and log into and sign out of your account on ’Chat App’.</em> </td> </tr> <tr> <td><em>Sign Up</em><ol><li><em>Select ‘New user? Join here’</em><li><em>Enter your first name, last name, email and a six character password </em><li><em>Press ‘Sign Up’</em></li></ol> </td> <td>(3) </td> </tr> <tr> <td><em>Log In</em><ol><li><em>Enter the email and six character password you created at sign up</em><li><em>Press ‘Login’</em></li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Sign Out </em><ol><li>Go to ‘Your Profile’ from Navigation Drawer<li>Press ‘Sign Out’</li></ol> </td> <td>(2) </td> </tr> <tr> <td colspan="2" ><strong><em>Navigation</em></strong><p><em>How to navigate between screens on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Navigation</em><ol><li>Press the hamburger button <strong>&lt;Icon here></strong> on the upper left corner</li></ol> </td> <td>(1) </td> </tr> <tr> <td colspan="2" ><strong><em>Account</em></strong><p><em>How to view and edit profile and view account details on ‘Chat App’.</em> </td> </tr> <tr> <td><em>View Profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ </li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Edit profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Select ‘Edit Profile’ <li>Enter changes to bio<li>Press ‘Submit Changes’<p>*Image upload not functional</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Account Details</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Press ‘View Account Details’</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Contacts</em></strong><p><em>How to add contacts and view your contact list on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Add Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Search’ <li>Search by name (Accounts not already in contacts)<li>View Profile on click<li>Add contact from profile ro go  yo to search (reset)</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Contacts List’ <li>(Optional) Use the search bar to search contacts</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Chat</em></strong><p><em>How to start a new conversation, enter an existing conversation and view the menu of a conversation on ‘Chat App’.</em> </td> </tr> <tr> <td><em>New Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Chat Bubble Icon <strong>&lt;Icon here></strong> in upper right corner<li>Use the search bar to enter the name of the user you are looking for<li>Select a name to add them to the conversation<li>Select ‘Chat Now!’</li></ol> </td> <td>(6) </td> </tr> <tr> <td><em>Existing Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select the Conversation you'd like to enter<li>Start typing and press send</li></ol> </td> <td>(4) </td> </tr> <tr> <td><em>Conversation Menu</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Conversation you'd like to enter<li>Select the hamburger icon <strong>&lt;Icon here></strong> in the upper right corner<li>(Optional) View chat member profile by pressing their name<li>(Optional) Add members who are not already contacts</li></ol> </td> <td>(6) </td> </tr></table>
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 
 # **_4. Implementation Manual_**
 
+## _1. Conceptual Design_
+
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 ## _2. Functional Requirements_
 
@@ -107,8 +110,7 @@ Users should be able to navigate the app using the navigation drawer.
 
 
 
-[Back to Top](#project-report-chat-app)
-
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 ## **_3. System Requirements_**
 
@@ -186,8 +188,7 @@ _Navigation Drawer_
 
 Users can access the various Navigations stack from the Navigation drawer. 
 
-[Back to Top](#project-report-chat-app)
-
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 ## **_4. Implementation Plan_**
 Below are the functions and features of ‘Chat App’ listed by who implemented them into the system.
@@ -259,7 +260,7 @@ _Implementation Manual_
 <ins>Morgan Iverson:</ins> System Requirements, Conceptual Design, Implementation Plan, Node Modules, Github Download, Code Listing, React Native Environment Set Up
 
 
-[Back to Top](#project-report-chat-app)
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 ## **_5. Application programs_**
 This document lists instructions for setting up the development environment to edit and run ‘Chat App’.
@@ -340,8 +341,7 @@ These are instructions on how to run ‘Chat App’ from terminal.
 4. Enter the following line into terminal
 ```expo start```
 
-[Back to Top](#project-report-chat-app)
-
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 ## **_Description of Programs_**
 This is a description of all the source files for ‘Chat App’.
@@ -416,5 +416,4 @@ This folder contains of the screen components of ‘Chat App’
 | _SignUpScreen.js_ - This file contains the components for and functions for interaction with the Sign Up Screen. 
 
 
-[Back to Top](#project-report-chat-app)
-
+[Back to Top](#cosc481w-group-4-project-report-chat-app)
