@@ -3,115 +3,50 @@
 2. [Introduction](#2-introduction)
 3. [User Manual](#3-user-manual)
 4. [Implementation Manual](#4-implementation-manual)
-    1. [Conceptual Design](#1-conceptual-design)
-    2. [Functional Requirements](#2-functional-requirements)
+    1. Conceptual Design
+    2. Functional Requirements
     3. [System Requirements](#3-system-requirements)
     4. [Implementation Plan](#4-implementation-plan)
-    5. [Application Programs]()
+    5. Application Programs
         1. [Create React Native Environment](#i-create-react-native-environment)
         2. [Download Source Code](#ii-how-to-download-chat-app-source-code-from-github)
         3. [Connect App to Firebase](#iii-how-to-connect-chat-app-to-google-firebase)
         4. [Install Node Modules](#iv-how-to-install-node-modules)
         5. [Run App](#v-how-to-run-chat-app)
-    6. [Descriptiion of Programs]()
+    6. Descriptiion of Programs
 ## **_1. Group Information_**
 
 ## **_2. Introduction_**
 
+
+
+
+
+
+
 ## **_3. User Manual_**
 The instructions of how to use ‘Chat App’ are listed below according to action. 
-<table> <tr> <td colspan="2" ><strong><em>Authentication</em></strong><p><em>How to create an account and log into and sign out of your account on ’Chat App’.</em> </td> </tr> <tr> <td><em>Sign Up</em><ol><li><em>Select ‘New user? Join here’</em><li><em>Enter your first name, last name, email and a six character password </em><li><em>Press ‘Sign Up’</em></li></ol> </td> <td>(3) </td> </tr> <tr> <td><em>Log In</em><ol><li><em>Enter the email and six character password you created at sign up</em><li><em>Press ‘Login’</em></li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Sign Out </em><ol><li>Go to ‘Your Profile’ from Navigation Drawer<li>Press ‘Sign Out’</li></ol> </td> <td>(2) </td> </tr> <tr> <td colspan="2" ><strong><em>Navigation</em></strong><p><em>How to navigate between screens on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Navigation</em><ol><li>Press the hamburger button <strong>&lt;Icon here></strong> on the upper left corner</li></ol> </td> <td>(1) </td> </tr> <tr> <td colspan="2" ><strong><em>Account</em></strong><p><em>How to view and edit profile and view account details on ‘Chat App’.</em> </td> </tr> <tr> <td><em>View Profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ </li></ol> </td> <td>(2) </td> </tr> <tr> <td><em>Edit profile</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Select ‘Edit Profile’ <li>Enter changes to bio<li>Press ‘Submit Changes’<p>*Image upload not functional</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Account Details</em><ol><li>Open Navigation Drawer<li>Press ‘Your Profile’ <li>Press ‘View Account Details’</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Contacts</em></strong><p><em>How to add contacts and view your contact list on ‘Chat App’.</em> </td> </tr> <tr> <td><em>Add Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Search’ <li>Search by name (Accounts not already in contacts)<li>View Profile on click<li>Add contact from profile ro go  yo to search (reset)</li></ol> </td> <td>(5) </td> </tr> <tr> <td><em>View Contacts</em><ol><li>Open Navigation Drawer<li>Press ‘Contacts List’ <li>(Optional) Use the search bar to search contacts</li></ol> </td> <td>(3) </td> </tr> <tr> <td colspan="2" ><strong><em>Chat</em></strong><p><em>How to start a new conversation, enter an existing conversation and view the menu of a conversation on ‘Chat App’.</em> </td> </tr> <tr> <td><em>New Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Chat Bubble Icon <strong>&lt;Icon here></strong> in upper right corner<li>Use the search bar to enter the name of the user you are looking for<li>Select a name to add them to the conversation<li>Select ‘Chat Now!’</li></ol> </td> <td>(6) </td> </tr> <tr> <td><em>Existing Conversation</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select the Conversation you'd like to enter<li>Start typing and press send</li></ol> </td> <td>(4) </td> </tr> <tr> <td><em>Conversation Menu</em><ol><li>Open Navigation Drawer<li>Press ‘Home’ (Conversations) <li>Select Conversation you'd like to enter<li>Select the hamburger icon <strong>&lt;Icon here></strong> in the upper right corner<li>(Optional) View chat member profile by pressing their name<li>(Optional) Add members who are not already contacts</li></ol> </td> <td>(6) </td> </tr></table>
+
+| Task | Instructions | Example|
+|---|---|---|
+| Sign Up |   1. Select ‘New user? Join here’</br> 2. Enter your first name, last name, email and a six character password </br>3. Press ‘Sign Up’| ![](Resources/gifs/SignUp.gif) |
+| Log In | 1. Enter the email and six character password you created at sign up</br> 2. Press ‘Login’ | ![](Resources/gifs/Login.gif) |
+| Sign Out | 1.Go to ‘Your Profile’ from Navigation Drawer</br>2. Press ‘Sign Out’ | ![](Resources/gifs/SignOut.gif) |
+| Navigation |  1. Press the hamburger button </br> on the upper left corner | ![](Resources/gifs/Navigation.gif)|
+| View Profile | 1. Open Navigation Drawer</br>2. Press ‘Your Profile’ | ![](Resources/gifs/ViewProfile.gif) |
+| Edit profile | 1. Open Navigation Drawer</br>2. Press ‘Your Profile’ </br>3. Select ‘Edit Profile’ </br> 4. Enter changes to bio</br>*Image upload not functional</br> Press 'Submit Changes'| ![](Resources/gifs/EditProfile.gif)|
+| View Account Details | 1. Open Navigation Drawer</br>2. Press ‘Your Profile’</br> 3. Press ‘View Account Details’ | ![](Resources/gifs/AccountDetails.gif) | 
+| Add Contact | 1. Open Navigation Drawer</br> 2. Press ‘Search’</br> 3. (Optional) Search by name (Accounts not already in contacts)</br> 4. View Profile on click</br> 5. Add contact from profile |![](Resources/gifs/AddContact.gif) |
+| View Contacts | 1. Open Navigation Drawer</br> 2. Press ‘Contacts' ||
+| New Conversation | 1. Open Navigation Drawer</br> 2. Press ‘Home’</br> 3. Select Chat Bubble Icon in upper right corner</br> 4. (Optional) Use the search bar to enter the name of the user you are looking for</br> 5. Select a name to add them to the conversation</br> 6. (Optional) Select the name of the user from the list above the search bar to remove them from the list</br> 7. Select ‘Chat Now!’|![](Resources/gifs/NewConversation.gif)|
+|Send Message | 1. Open Navigation Drawer</br> 2. Press ‘Home'</br> 3. Select the Conversation you'd like to send a message in</br> 4. Start typing and press ‘Send’</br> 5. See sent/received messages on screen | ![](Resources/gifs/ExistingConversation.gif) |
+|Conversation Menu | 1. Open Navigation Drawer</br> 2. Press ‘Home’</br> 3. Select Conversation you'd like to enter</br> 4. Select the hamburger icon in the upper right corner</br> 5. (Optional) View chat member profile by pressing their name</br> 6. (Optional) Add members who are not already contacts from their profile</br> 7. View Chat Members|![](Resources/gifs/ConvMenu.gif) |
+    
 [Back to Top](#cosc481w-group-4-project-report-chat-app)
 
 
 # **_4. Implementation Manual_**
-
-## _1. Conceptual Design_
-
-[Back to Top](#cosc481w-group-4-project-report-chat-app)
-
-## _2. Functional Requirements_
-
-
-The functional requirements of ‘Chat App’ are listed below according to the function category.
-
-
-**User Authentication**
-
-_Sign Up_
-
-Users should be able to create an account using their first and last name, email and a six character password. 
-
-_Login_
-
-Users should be able to log into their account using their email and the six character password entered at sign up. 
-
-_Sign Out_
-
-Users should be able to log out of their account. 
-
-_Error Catching_
-
-Users should see errors on screen when completing the log in or sign up process. 
-
-**Account/Profile Management**
-
-_Profile View_
-
-Users should be able to view their profile which shows their name and bio. 
-
-_Profile Edit_
-
-Users should be able to change their Profile bio. 
-
-_Account Details View_
-
-Users should be able to view the details of their account including name, email, profile details, contacts and conversations.
-
-**Contacts Management**
-
-_Contacts List_
-
-Users should be able to see user contacts and view contact profiles. 
-
-_Search Contacts_
-
-Users should be able to search app users and add them as contacts.
-
-**Conversations Management**
-
-_Conversations View_
-
-Users should be able to see a listing of all their conversations.
-
-_Conversation Details_
-
-Users should be able to see the members of a conversation in a chat menu.
-
-_Conversations Notifications_
-
-Users should be able to see bolded unread messages, conversations and see Sent/Receive/Store messages. 
-
-_Conversations Create_
-
-Users should be able to start new conversations from users in their contact list. 
-
-**Message Management**
-
-_Message Create_
-
-Users should be able to send a message through any existing conversations.
-
-**Navigation**
-
-_Navigation Drawer_
-
-Users should be able to navigate the app using the navigation drawer. 
-
-
-
-[Back to Top](#cosc481w-group-4-project-report-chat-app)
-
+...
 ## **_3. System Requirements_**
 
 The system requirements of ‘Chat App’ are listed below according to the function category.
@@ -340,80 +275,5 @@ These are instructions on how to run ‘Chat App’ from terminal.
 3. cd into the project folder (where App.js)
 4. Enter the following line into terminal
 ```expo start```
-
-[Back to Top](#cosc481w-group-4-project-report-chat-app)
-
-## **_Description of Programs_**
-This is a description of all the source files for ‘Chat App’.
-
-**_components_**
-
-This folder holds all components for ‘Chat App’ specifically buttons.
-
-| _Buttons.js_ - This file holds all the button components (ProfileButton, AddConversationButton, FormButton/FormButtonText)
-
-
-**_firebase_**
-
-This folder holds the configuration file for firebase.
-
-| _config.js_ -This file contains the object containing keys for firebase connection.
-
-
-**_functions_**
-
-This folder contains all the functions to run ‘Chat App’.
-
-| _AccountProfile.js_ - This file contains functions for user account and profile management including, getting/editing Profile data and getting account Data such as contacts and conversations.
-
-| _Authentication.js_ - This file contains functions for user authentication to facilitate login, sign up, sign out and account/profile creation.
-
-| _Class.js_ - This file contains class files which help facilitate storage of data in Google Firebase Firestore database. Classes include: FBObject, Account, Conversation, Message and Profile
-
-| _Communcation.js_ - This file contains functions for user communication including functions that get all user conversations for display, load messages of each conversation for viewing, store chat messages in firebase, listen for new messages sent in conversation, and others.
-
-
-**_navigation_**
-
-This folder contains all the components to facilitate navigation of ‘Chat App’.
-
-| _AuthProvider.js_ - This file defines the context which tells the application if the current user is logged in or not. 
-
-| _AuthStack.js_ - This file facilitates the navigation abilities for two screens login and sign up. 
-
-| _DrawerNavigator.js_ - This file contains the drawer navigator which facilitates movement between various stacks of ‘Chat App’.
-
-| _index.js_ - This file contains the provider which holds all the routes for ‘Chat App’ navigation.
-
-| _Routes.js_ - This file contains all the stacks fro navigation of ‘Chat App’ and decides which stack the current user can access. 
-
-| _ScreenStacks.js_ - This file contains all the stacks for signed up users to access when they are logged in. 
-
-**_screens_**
-
-This folder contains of the screen components of ‘Chat App’
-
-| _AccountDetailScreen.js_ - This file contains the components and functions for interaction with for the Account Detail Screen. 
-
-| _ChatMenuScreen.js_ - This file contains the components for and functions for interaction with the Chat Menu Screen. 
-
-| _ChatRoomScreen.js_ - This file contains the components for and functions for interaction with the Chat Room Screen. 
-
-| _ContactsList.js_ - This file contains the components for and functions for interaction with  the Contacts List Screen. 
-
-| _ConversationScreen.js_ - This file contains the components for and functions for interaction with the Conversation Listing/Home Screen. 
-
-| _EditProfile.js_ - This file contains the components for and functions for interaction with the Edit Profile Screen. 
-
-| _LoginScreen.js_ - This file contains the components for and functions for interaction with the Login Screen. 
-
-| _NewChatScreen.js_ - This file contains the components for and functions for interaction with the New Chat creation Screen. 
-
-| _ProfileScreen.js_ - This file contains the components for and functions for interaction with the Profile Screen and defines which type of profile and what data is to be shown. 
-
-| _SearchScreen.js_ - This file contains the components for and functions for interaction with the Search Screen. 
-
-| _SignUpScreen.js_ - This file contains the components for and functions for interaction with the Sign Up Screen. 
-
 
 [Back to Top](#cosc481w-group-4-project-report-chat-app)
